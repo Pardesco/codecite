@@ -79,13 +79,20 @@ def parse_pdf(path: Path) -> Iterator[Block]:
             yield Block("table", md, page=pno)
 
 
-_HEAD_START = re.compile(r"^(?:\([A-Z]{1,2}\)|\d{1,4}(?:\.\d+)*\s|TABLE\s|CHAPTER\s|SECTION\s|Exceptions?\s*:)", re.IGNORECASE)
+_HEAD_START = re.compile(
+    r"^(?:\([A-Z]{1,2}\)|\d{1,4}(?:\.\d+)*\s|TABLE\s|CHAPTER\s|SECTION\s|Exceptions?\s*:"
+    r"|[A-Z0-9][A-Z0-9 ,\-/()']{2,60}\.)",  # 'DEAD END.' definition-term lines
+    re.IGNORECASE,
+)
+_STRUCTURAL = re.compile(r"^(?:CHAPTER|SECTION)\s", re.IGNORECASE)
 
 
 def _continues_heading(head: Block, txt: str, size: float, bold: bool) -> bool:
     """A bold line continues the previous bold line when the first has no terminal punctuation
     and the second does not itself look like the start of a heading."""
     if head.font_size != size or head.bold != bold:
+        return False
+    if _STRUCTURAL.match(head.text):  # 'SECTION BC 202' never absorbs the next line
         return False
     if head.text.rstrip().endswith((".", ":", ";")):
         return False
