@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any
 
 from mcp.server.mcpserver import MCPServer
+from mcp.server.mcpserver.exceptions import ToolError
 
 from codeplumb.config import get_settings
 from codeplumb.db import queries as q
@@ -53,17 +54,15 @@ def _emb():
 
 
 def _guard(fn, *args, **kwargs):
+    """Turn failures into short, actionable MCP tool errors (no stack traces reach the model)."""
     try:
         return fn(*args, **kwargs)
-    except q.NotFound as e:
+    except (q.NotFound, ValueError) as e:
         _conn().rollback()
-        raise ValueError(str(e)) from None
-    except ValueError:
-        _conn().rollback()
-        raise
+        raise ToolError(str(e)) from None
     except Exception as e:
         _conn().rollback()
-        raise ValueError(f"{type(e).__name__}: {str(e)[:300]}") from None
+        raise ToolError(f"{type(e).__name__}: {str(e)[:300]}") from None
 
 
 @mcp.tool()

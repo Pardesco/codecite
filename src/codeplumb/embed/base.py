@@ -35,6 +35,7 @@ class FakeEmbedder:
     """
 
     provider = "fake"
+    abstain_similarity = 0.30  # hashed-BoW cosine runs low; real models use Settings.abstain_similarity
 
     def __init__(self, dimensions: int = 768, model: str = "hashed-bow") -> None:
         self.model = model

@@ -163,12 +163,13 @@ def search(
         seen_sections.add(sid)
 
     # abstain heuristic: no strict full-text match and the nearest vector is far away
+    sim_floor = getattr(embedder, "abstain_similarity", s.abstain_similarity)
     if mode == "lexical":
         abstain = strict_hits == 0
     elif mode == "vector":
-        abstain = top_similarity < s.abstain_similarity
+        abstain = top_similarity < sim_floor
     else:
-        abstain = strict_hits == 0 and top_similarity < s.abstain_similarity
+        abstain = strict_hits == 0 and top_similarity < sim_floor
     return {
         "query": query,
         "hits": hits[:k] if not any(h["scores"].get("overlay") for h in hits) else hits[: k + 1],
