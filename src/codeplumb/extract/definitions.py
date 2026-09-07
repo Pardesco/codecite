@@ -3,7 +3,8 @@ from __future__ import annotations
 import re
 
 # 'OCCUPANT LOAD. The number of persons ...'  or  '**Occupant load.** The number ...'
-_TERM = re.compile(r"(?:(?<=\n)|^)\s*\**(?P<term>[A-Z][A-Z0-9 ,\-/()']{2,60}?)\**\.\s+", re.MULTILINE)
+# PDF extraction may drop the space after the period ("EGRESS.A continuous ..."), so \s* with a capital lookahead
+_TERM = re.compile(r"(?:(?<=\n)|^)\s*\**(?P<term>[A-Z][A-Z0-9 ,\-/()']{2,60}?)\**\.\s*(?=[A-Z(\"“])", re.MULTILINE)
 
 
 def split_definitions(body: str) -> list[tuple[str, str]]:

@@ -133,6 +133,10 @@ def build_tree(blocks: Iterable[Block], profile: Profile, corpus_title: str = ""
                 # a caption followed by prose, not a table: keep the caption text as body
                 sec.paragraphs.append(f"Table {pending_caption.number} {pending_caption.title}".strip())
                 pending_caption = None
+            if block.kind == "heading" and not sec.title and not sec.paragraphs:
+                # "CHAPTER 10" on one line, "MEANS OF EGRESS" on the next (different font size)
+                sec.title = block.text.strip().title() if block.text.strip().isupper() else block.text.strip()
+                continue
             sec.paragraphs.append(block.text.strip())
 
     # materialise breadcrumbs
