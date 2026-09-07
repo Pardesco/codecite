@@ -1,0 +1,347 @@
+# Golden set for the synthetic Model Building Code, 2026 Edition (samples/sample-building-code).
+# expected_sections is any-of; a descendant/ancestor match scores half credit.
+# Questions with no expected_sections are "not in corpus" and score on abstain.
+
+- id: q001
+  question: "What is the occupant load factor for business areas?"
+  corpus: sample-bc-2026
+  expected_sections: ["1004.5"]
+  expected_kinds: ["table"]
+  tags: [table, egress]
+- id: q002
+  question: "occupant load factor mercantile"
+  corpus: sample-bc-2026
+  expected_sections: ["1004.5"]
+  expected_kinds: ["table"]
+  tags: [table, egress]
+- id: q003
+  question: "How is the occupant load determined for areas without fixed seating?"
+  corpus: sample-bc-2026
+  expected_sections: ["1004.5"]
+  tags: [lookup, egress]
+- id: q004
+  question: "Can the building official approve a lower occupant load than calculated?"
+  corpus: sample-bc-2026
+  expected_sections: ["1004.5"]
+  expected_kinds: ["exception"]
+  tags: [exception, egress]
+- id: q005
+  question: "maximum occupant load increase one occupant per 7 square feet"
+  corpus: sample-bc-2026
+  expected_sections: ["1004.5.1"]
+  tags: [lookup, egress]
+- id: q006
+  question: "How do I calculate occupant load for fixed seating without dividing arms?"
+  corpus: sample-bc-2026
+  expected_sections: ["1004.6"]
+  tags: [paraphrase, egress]
+- id: q007
+  question: "Does the occupant load need to be posted in an assembly room?"
+  corpus: sample-bc-2026
+  expected_sections: ["1004.9"]
+  tags: [paraphrase, egress]
+- id: q008
+  question: "What is the minimum corridor width?"
+  corpus: sample-bc-2026
+  expected_sections: ["1020.2"]
+  tags: [lookup, corridor]
+- id: q009
+  question: "Are there exceptions to the corridor width requirement for Group I-2?"
+  corpus: sample-bc-2026
+  expected_sections: ["1020.2"]
+  expected_kinds: ["exception"]
+  tags: [exception, corridor]
+- id: q010
+  question: "How long can a dead-end corridor be in a sprinklered office building?"
+  corpus: sample-bc-2026
+  expected_sections: ["1020.4"]
+  expected_kinds: ["exception"]
+  tags: [exception, corridor, amendment]
+- id: q011
+  question: "corridor fire-resistance rating Group R sprinklered"
+  corpus: sample-bc-2026
+  expected_sections: ["1020.1"]
+  expected_kinds: ["table"]
+  tags: [table, corridor]
+- id: q012
+  question: "What is the maximum exit access travel distance for a Group B occupancy with sprinklers?"
+  corpus: sample-bc-2026
+  expected_sections: ["1017.2"]
+  expected_kinds: ["table"]
+  tags: [table, egress]
+- id: q013
+  question: "Can travel distance be increased to 400 feet in a single-storey factory?"
+  corpus: sample-bc-2026
+  expected_sections: ["1017.2"]
+  expected_kinds: ["exception"]
+  tags: [exception, egress]
+- id: q014
+  question: "How is exit access travel distance measured?"
+  corpus: sample-bc-2026
+  expected_sections: ["1017.3"]
+  tags: [paraphrase, egress]
+- id: q015
+  question: "minimum clear opening width of an egress door"
+  corpus: sample-bc-2026
+  expected_sections: ["1010.1.1"]
+  tags: [lookup, doors]
+- id: q016
+  question: "When must a door swing in the direction of egress travel?"
+  corpus: sample-bc-2026
+  expected_sections: ["1010.1.2"]
+  tags: [paraphrase, doors]
+- id: q017
+  question: "sign THIS DOOR TO REMAIN UNLOCKED WHEN THIS SPACE IS OCCUPIED"
+  corpus: sample-bc-2026
+  expected_sections: ["1010.1.9"]
+  expected_kinds: ["exception"]
+  tags: [exception, doors]
+- id: q018
+  question: "What are the maximum riser height and minimum tread depth for stairs?"
+  corpus: sample-bc-2026
+  expected_sections: ["1011.5"]
+  tags: [lookup, stairs, amendment]
+- id: q019
+  question: "stair riser height inside an apartment dwelling unit"
+  corpus: sample-bc-2026
+  expected_sections: ["1011.5"]
+  expected_kinds: ["exception"]
+  tags: [exception, stairs]
+- id: q020
+  question: "Where can a spiral stairway be used as a means of egress?"
+  corpus: sample-bc-2026
+  expected_sections: ["1011.10"]
+  tags: [paraphrase, stairs]
+- id: q021
+  question: "How high should a handrail be?"
+  corpus: sample-bc-2026
+  expected_sections: ["1014.2"]
+  tags: [paraphrase, stairs]
+- id: q022
+  question: "handrail circular cross section diameter"
+  corpus: sample-bc-2026
+  expected_sections: ["1014.3"]
+  tags: [lookup, stairs]
+- id: q023
+  question: "minimum stair headroom clearance"
+  corpus: sample-bc-2026
+  expected_sections: ["1011.3"]
+  tags: [lookup, stairs]
+- id: q024
+  question: "How many exits does a storey with 800 occupants need?"
+  corpus: sample-bc-2026
+  expected_sections: ["1006.3.1"]
+  expected_kinds: ["table"]
+  tags: [table, egress]
+- id: q025
+  question: "When is a single exit permitted from a storey?"
+  corpus: sample-bc-2026
+  expected_sections: ["1006.3.2"]
+  tags: [paraphrase, egress]
+- id: q026
+  question: "maximum common path of egress travel Group R-2"
+  corpus: sample-bc-2026
+  expected_sections: ["1006.2.1"]
+  expected_kinds: ["table"]
+  tags: [table, egress]
+- id: q027
+  question: "What is the stairway capacity factor per occupant?"
+  corpus: sample-bc-2026
+  expected_sections: ["1005.3.1"]
+  tags: [lookup, egress]
+- id: q028
+  question: "What does 'means of egress' mean?"
+  corpus: sample-bc-2026
+  expected_sections: ["202"]
+  expected_kinds: ["definition"]
+  tags: [definition]
+- id: q029
+  question: "definition of fire barrier"
+  corpus: sample-bc-2026
+  expected_sections: ["202"]
+  expected_kinds: ["definition"]
+  tags: [definition]
+- id: q030
+  question: "What is a public way?"
+  corpus: sample-bc-2026
+  expected_sections: ["202"]
+  expected_kinds: ["definition"]
+  tags: [definition]
+- id: q031
+  question: "When is a sprinkler system required in a Group M mercantile building?"
+  corpus: sample-bc-2026
+  expected_sections: ["903.2.7"]
+  tags: [lookup, sprinklers]
+- id: q032
+  question: "Do all residential buildings need sprinklers?"
+  corpus: sample-bc-2026
+  expected_sections: ["903.2.8"]
+  tags: [paraphrase, sprinklers, amendment]
+- id: q033
+  question: "Which sprinkler systems do not need electrical supervision?"
+  corpus: sample-bc-2026
+  expected_sections: ["903.4"]
+  expected_kinds: ["exception"]
+  tags: [exception, sprinklers]
+- id: q034
+  question: "Can I use a residential sprinkler standard and still take the height increase?"
+  corpus: sample-bc-2026
+  expected_sections: ["903.3.1.2"]
+  tags: [crossref, sprinklers]
+- id: q035
+  question: "When does a Group B office need a manual fire alarm system?"
+  corpus: sample-bc-2026
+  expected_sections: ["907.2.2"]
+  tags: [lookup, alarm]
+- id: q036
+  question: "fire alarm apartment building more than 16 dwelling units"
+  corpus: sample-bc-2026
+  expected_sections: ["907.2.9"]
+  tags: [lookup, alarm]
+- id: q037
+  question: "How much can the allowable area increase with sprinklers?"
+  corpus: sample-bc-2026
+  expected_sections: ["506.2"]
+  tags: [paraphrase, area]
+- id: q038
+  question: "frontage increase formula open space width"
+  corpus: sample-bc-2026
+  expected_sections: ["506.3.3", "506.3"]
+  tags: [lookup, area]
+- id: q039
+  question: "allowable area Group B Type II construction"
+  corpus: sample-bc-2026
+  expected_sections: ["506.1"]
+  expected_kinds: ["table"]
+  tags: [table, area]
+- id: q040
+  question: "How many storeys can a Type V R-2 apartment building be?"
+  corpus: sample-bc-2026
+  expected_sections: ["503.1"]
+  expected_kinds: ["table"]
+  tags: [table, height]
+- id: q041
+  question: "extra storey for sprinklered buildings"
+  corpus: sample-bc-2026
+  expected_sections: ["504.2"]
+  tags: [paraphrase, height]
+- id: q042
+  question: "What is the maximum size of a mezzanine?"
+  corpus: sample-bc-2026
+  expected_sections: ["505.2"]
+  tags: [lookup, mezzanine, amendment]
+- id: q043
+  question: "mezzanine one-half floor area sprinklered Type I"
+  corpus: sample-bc-2026
+  expected_sections: ["505.2"]
+  expected_kinds: ["exception"]
+  tags: [exception, mezzanine]
+- id: q044
+  question: "required separation between Group A and Group B occupancies"
+  corpus: sample-bc-2026
+  expected_sections: ["508.4"]
+  expected_kinds: ["table"]
+  tags: [table, separation]
+- id: q045
+  question: "accessory occupancy 10 percent of floor area"
+  corpus: sample-bc-2026
+  expected_sections: ["508.2", "302.1"]
+  tags: [lookup, occupancy]
+- id: q046
+  question: "Is a 40-person restaurant Group A or Group B?"
+  corpus: sample-bc-2026
+  expected_sections: ["303.1"]
+  expected_kinds: ["exception"]
+  tags: [exception, occupancy]
+- id: q047
+  question: "fire door rating for a 2-hour exit enclosure"
+  corpus: sample-bc-2026
+  expected_sections: ["716.1"]
+  expected_kinds: ["table"]
+  tags: [table, fire]
+- id: q048
+  question: "maximum size of an opening in a fire barrier"
+  corpus: sample-bc-2026
+  expected_sections: ["707.6"]
+  tags: [lookup, fire]
+- id: q049
+  question: "fire partition rating"
+  corpus: sample-bc-2026
+  expected_sections: ["708.3"]
+  tags: [lookup, fire]
+- id: q050
+  question: "Do fire doors have to close by themselves?"
+  corpus: sample-bc-2026
+  expected_sections: ["716.2"]
+  tags: [paraphrase, fire]
+- id: q051
+  question: "What work does not need a building permit?"
+  corpus: sample-bc-2026
+  expected_sections: ["105.2"]
+  expected_kinds: ["exception"]
+  tags: [exception, admin]
+- id: q052
+  question: "How long before a permit expires?"
+  corpus: sample-bc-2026
+  expected_sections: ["105.3"]
+  tags: [paraphrase, admin, amendment]
+- id: q053
+  question: "Can the building official approve an alternative material?"
+  corpus: sample-bc-2026
+  expected_sections: ["104.2"]
+  tags: [paraphrase, admin]
+- id: q054
+  question: "minimum ceiling height of a means of egress"
+  corpus: sample-bc-2026
+  expected_sections: ["1003.2"]
+  tags: [lookup, egress]
+- id: q055
+  question: "How far can a wall-mounted object protrude into a corridor?"
+  corpus: sample-bc-2026
+  expected_sections: ["1003.3"]
+  tags: [paraphrase, egress]
+- id: q056
+  question: "minimum room width and kitchen passageway"
+  corpus: sample-bc-2026
+  expected_sections: ["1208.1"]
+  tags: [lookup, interior]
+- id: q057
+  question: "minimum ceiling height bathrooms and kitchens"
+  corpus: sample-bc-2026
+  expected_sections: ["1208.2"]
+  tags: [lookup, interior]
+- id: q058
+  question: "What percentage of public entrances must be accessible?"
+  corpus: sample-bc-2026
+  expected_sections: ["1105.1"]
+  tags: [lookup, accessibility]
+- id: q059
+  question: "Section 1017.2"
+  corpus: sample-bc-2026
+  expected_sections: ["1017.2"]
+  tags: [crossref]
+- id: q060
+  question: "What does 1010.1.1 say about door height?"
+  corpus: sample-bc-2026
+  expected_sections: ["1010.1.1"]
+  tags: [crossref, doors]
+- id: q061
+  question: "What is the required snow load on a flat roof in a coastal climate?"
+  corpus: sample-bc-2026
+  expected_sections: []
+  tags: [not-in-corpus]
+- id: q062
+  question: "electrical panel clearance working space"
+  corpus: sample-bc-2026
+  expected_sections: []
+  tags: [not-in-corpus]
+- id: q063
+  question: "plumbing fixture count for a stadium"
+  corpus: sample-bc-2026
+  expected_sections: []
+  tags: [not-in-corpus]
+- id: q064
+  question: "elevator emergency recall keyed switch"
+  corpus: sample-bc-2026
+  expected_sections: []
+  tags: [not-in-corpus]

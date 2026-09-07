@@ -1,0 +1,19 @@
+services:
+  db:
+    image: pgvector/pgvector:pg17
+    container_name: codeplumb-db
+    environment:
+      POSTGRES_USER: codeplumb
+      POSTGRES_PASSWORD: codeplumb
+      POSTGRES_DB: codeplumb
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - codeplumb-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U codeplumb"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+volumes:
+  codeplumb-pgdata:

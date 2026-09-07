@@ -1,0 +1,33 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      db:
+        image: pgvector/pgvector:pg17
+        env:
+          POSTGRES_USER: codeplumb
+          POSTGRES_PASSWORD: codeplumb
+          POSTGRES_DB: codeplumb
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U codeplumb" --health-interval 5s --health-timeout 3s --health-retries 20
+    env:
+      CODEPLUMB_DATABASE_URL: postgresql://codeplumb:codeplumb@127.0.0.1:5432/codeplumb
+      CODEPLUMB_TEST_DATABASE_URL: postgresql://codeplumb:codeplumb@127.0.0.1:5432/codeplumb_test
+      CODEPLUMB_EMBED_PROVIDER: fake
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - run: uv sync --group dev
+      - run: uv run ruff check src tests
+      - run: uv run pytest -q
+      - name: eval gate (fake embedder, synthetic corpus)
+        run: |
+          uv run codeplumb init
+          uv run codeplumb ingest samples/sample-building-code/model-building-code-2026.md --corpus sample-bc-2026 --layer base --profile ibc --title "Model Building Code" --version 2026 --corpus-title "Model Building Code 2026"
+          uv run codeplumb ingest samples/sample-building-code/local-amendments-2026.md --corpus sample-bc-2026 --layer amendment --profile ibc --title "Local Amendments" --version 2026
+          uv run codeplumb eval evals/sample-bc.yaml --modes hybrid,lexical,vector --report evals/report.md --fail-under hit@5=0.85
+      - uses: actions/upload-artifact@v4
+        with: { name: eval-report, path: evals/report.md }
