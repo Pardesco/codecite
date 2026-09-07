@@ -6,6 +6,7 @@ and reproducible in CI. Keep it under 60 seconds.
 
 from __future__ import annotations
 
+import os
 import re
 import subprocess
 import sys
@@ -36,7 +37,8 @@ def run(cmd: str) -> str:
         full = [sys.executable, "-m", "codeplumb.cli"] + _split(argv[1] if len(argv) > 1 else "")
     else:
         full = _split(cmd)
-    p = subprocess.run(full, capture_output=True, text=True, cwd=ROOT, shell=(argv[0] != "codeplumb"), encoding="utf-8", errors="replace")
+    env = {**os.environ, "PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8"}
+    p = subprocess.run(full, capture_output=True, text=True, cwd=ROOT, shell=(argv[0] != "codeplumb"), encoding="utf-8", errors="replace", env=env)
     out = (p.stdout or "") + (p.stderr if p.returncode else "")
     return re.sub(r"\x1b\[[0-9;]*[A-Za-z]", "", out).rstrip()
 
