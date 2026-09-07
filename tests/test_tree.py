@@ -1,6 +1,7 @@
 from pathlib import Path
 
 from codeplumb.ingest import parse_to_tree
+from codeplumb.parse.base import Block
 from codeplumb.parse.markdown import parse_markdown_text
 from codeplumb.profiles import get_profile
 from codeplumb.tree import build_tree
@@ -66,3 +67,27 @@ def test_generic_profile_markdown():
     nums = [s.number for s in secs]
     assert nums[0].startswith("H1-") and "3" in nums and "3.1" in nums
     assert _by_number(secs)["3.1"].parent == _by_number(secs)["3"].ordinal
+
+
+def test_duplicate_numbers_get_alias():
+
+    blocks = [
+        Block("heading", "4101:1-3-01 Occupancy classification and use."),
+        Block("heading", "(F) Modify table 307.1(1) as follows:"),
+        Block("paragraph", "first"),
+        Block("heading", "(G) Modify footnote i to table 307.1(1) to read:"),
+        Block("paragraph", "second"),
+    ]
+    secs = build_tree(blocks, get_profile("oac"))
+    assert [s.number for s in secs] == ["4101:1-3-01", "307.1", "307.1(G)"]
+    assert all(s.supersedes == "307.1" for s in secs[1:])
+
+
+def test_pdf_wrapped_heading_merge_rule():
+    from codeplumb.parse.pdf import _continues_heading
+
+    head = Block("heading", "(A)Modify Section 1001.1to add the following sentence at the end of the", font_size=12.0, bold=True)
+    assert _continues_heading(head, "paragraph:", 12.0, True)
+    assert not _continues_heading(head, "1010.2.16 Temporary door locking devices.", 12.0, True)
+    done = Block("heading", "(H) Add Section 1010.2.16 to read as follows:", font_size=12.0, bold=True)
+    assert not _continues_heading(done, "anything", 12.0, True)

@@ -56,6 +56,9 @@ def db():
         conn, SAMPLES / "local-amendments-2026.md", "sample-bc-2026", "amendment", "ibc", emb,
         title="Local Amendments", version="2026",
     )
+    for f in ("model-building-code-2026.md", "local-amendments-2026.md"):
+        ingest_document(conn, SAMPLES / f, "sample-bc-2026__naive", "amendment" if "amend" in f else "base", "ibc", emb,
+                        title=f, corpus_title="Model Building Code 2026 (naive baseline)", naive=True)
     ingest_document(
         conn, ROOT / "samples" / "acme-standards" / "acme-design-standards.md", "acme-standards", "base",
         "generic", emb, title="Acme Design Standards", corpus_title="Acme Engineering Design Standards",

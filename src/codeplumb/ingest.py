@@ -9,7 +9,7 @@ from pathlib import Path
 import psycopg
 from psycopg.types.json import Jsonb
 
-from codeplumb.chunk import chunk_section
+from codeplumb.chunk import chunk_section, naive_windows
 from codeplumb.embed.base import Embedder
 from codeplumb.parse import parse_file
 from codeplumb.profiles import get_profile
@@ -63,6 +63,7 @@ def ingest_document(
     version: str | None = None,
     corpus_title: str | None = None,
     force: bool = False,
+    naive: bool = False,
 ) -> dict:
     if layer not in ("base", "amendment"):
         raise ValueError("layer must be 'base' or 'amendment'")
@@ -82,8 +83,12 @@ def ingest_document(
     try:
         sections = parse_to_tree(path, profile_name, corpus["title"], layer)
         profile = get_profile(profile_name)
-        per_section = [chunk_section(s, profile) for s in sections]
-        all_chunks = [(si, c) for si, (chunks, _, _) in enumerate(per_section) for c in chunks]
+        if naive:  # baseline: fixed 512-token windows, no section-aware chunks, no cross-refs
+            per_section = [([], s.body, []) for s in sections]
+            all_chunks = naive_windows(sections)
+        else:
+            per_section = [chunk_section(s, profile) for s in sections]
+            all_chunks = [(si, c) for si, (chunks, _, _) in enumerate(per_section) for c in chunks]
         vectors = embedder.embed_documents([c.text for _, c in all_chunks]) if all_chunks else []
         page_count = max((s.page_end or 0) for s in sections) or None if sections else None
 

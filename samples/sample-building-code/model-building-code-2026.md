@@ -14,21 +14,21 @@ Exception: Agricultural sheds of not more than 400 square feet in floor area tha
 
 ### 101.3 Intent
 
-The purpose of this code is to set minimum requirements that protect life, health, and property through structural strength, adequate means of egress, sanitation, light and ventilation, energy conservation, and fire and life safety.
+This code sets the floor, not the ceiling. Its purpose is to protect people and property through sound structure, workable ways out, sanitation, light and air, energy conservation, and fire and life safety, while leaving designers free to exceed it.
 
 ## SECTION 104 DUTIES OF THE BUILDING OFFICIAL
 
 ### 104.1 General
 
-The building official is authorised to render interpretations of this code and to adopt policies that clarify its application. Such interpretations shall be in conformance with the intent of the code and shall not waive a requirement.
+The building official interprets this code and may publish policies that explain how it applies. An interpretation shall follow the intent of the code and shall never waive a requirement.
 
 ### 104.2 Alternative materials and methods
 
-A material, design, or method of construction that is not specifically prescribed by this code may be approved where the building official finds that it is at least equivalent in quality, strength, durability, fire resistance, and safety to what the code prescribes. Supporting data shall be submitted as required by Section 104.3.
+A material, design, or construction method this code does not describe may still be approved. The building official must first find that it matches what the code prescribes in quality, strength, durability, fire resistance, and safety. Supporting data shall be submitted as required by Section 104.3.
 
 ### 104.3 Tests and technical data
 
-Where there is insufficient evidence of compliance, the building official may require tests as proof of compliance. Tests shall be made by an approved agency and reports shall be retained by the building official for the life of the structure.
+Where the evidence of compliance is thin, the building official may require tests as proof. An approved agency shall run the tests, and the building official shall keep the reports for the life of the structure.
 
 ## SECTION 105 PERMITS
 
@@ -47,7 +47,7 @@ Exceptions:
 
 ### 105.3 Expiration
 
-Every permit expires if the authorised work is not commenced within 180 days after issuance, or if the work is suspended for a period of 180 days after it has commenced. The building official may grant one extension of not more than 180 days on written request.
+A permit lapses if the work has not started within 180 days of issuance, or if work stops for 180 days once it has started. On written request the building official may grant one extension of up to 180 days.
 
 # CHAPTER 2 DEFINITIONS
 
@@ -63,37 +63,37 @@ ACCESSIBLE ROUTE. A continuous, unobstructed path connecting accessible elements
 
 ASSEMBLY SPACE. A room or space used for the gathering of 50 or more persons for purposes such as civic, social, religious, recreational, food or drink consumption, or awaiting transportation.
 
-AUTOMATIC SPRINKLER SYSTEM. An integrated network of piping connected to a water supply, with sprinklers that open automatically at a predetermined temperature, designed and installed in accordance with Section 903.
+AUTOMATIC SPRINKLER SYSTEM. A network of piping fed by a water supply and fitted with sprinklers that open on their own at a set temperature, designed and installed under Section 903.
 
-CORRIDOR. An enclosed exit access component that defines and provides a path of egress travel to an exit.
+CORRIDOR. An enclosed passage within the exit access that leads occupants toward an exit.
 
 EGRESS COURT. A court or yard that provides access to a public way for one or more exits.
 
-EXIT. That portion of a means of egress system between the exit access and the exit discharge that is separated from other interior spaces by fire-resistance-rated construction.
+EXIT. The middle part of the means of egress: a passage, separated from the rest of the building by fire-resistance-rated construction, that leads from the exit access to the exit discharge.
 
-EXIT ACCESS. That portion of a means of egress system that leads from any occupied point in a building to an exit.
+EXIT ACCESS. The first part of the means of egress: the route from any occupied point to the door of an exit.
 
-EXIT DISCHARGE. That portion of a means of egress system between the termination of an exit and a public way.
+EXIT DISCHARGE. The last part of the means of egress: the route from the end of an exit to the public way.
 
-FIRE AREA. The aggregate floor area enclosed and bounded by fire walls, fire barriers, exterior walls, or horizontal assemblies of a building.
+FIRE AREA. The floor area enclosed by fire walls, fire barriers, exterior walls, or rated horizontal assemblies, taken together.
 
 FIRE BARRIER. A fire-resistance-rated wall assembly in which continuity is maintained, used to restrict the spread of fire.
 
 FIRE PARTITION. A vertical assembly of materials designed to restrict the spread of fire in which openings are protected, with a lower rating than a fire barrier.
 
-GRADE PLANE. A reference plane representing the average of finished ground level adjoining the building at exterior walls.
+GRADE PLANE. An imaginary horizontal plane at the average finished ground elevation along the exterior walls.
 
-MEANS OF EGRESS. A continuous and unobstructed path of vertical and horizontal egress travel from any occupied portion of a building to a public way, consisting of three parts: the exit access, the exit, and the exit discharge.
+MEANS OF EGRESS. The complete, unobstructed route a person can follow from any occupied point in a building to a public way. It has three parts in sequence: exit access, exit, and exit discharge.
 
-MEZZANINE. An intermediate level between the floor and ceiling of a storey, with a floor area of not more than one-third of the room in which it is located, as regulated by Section 505.
+MEZZANINE. A partial floor inserted between a floor and the ceiling above it, no larger than one-third of the room it sits in, subject to Section 505.
 
-OCCUPANT LOAD. The number of persons for which the means of egress of a building or portion thereof is designed, determined in accordance with Section 1004.
+OCCUPANT LOAD. The number of people the means of egress serving a space is sized for, computed under Section 1004.
 
-PUBLIC WAY. A street, alley, or other parcel of land open to the outside air, deeded to public use, and having a clear width and height of not less than 10 feet.
+PUBLIC WAY. Any street, alley, or similar strip of land that is open to the sky, dedicated to public use, and at least 10 feet wide and 10 feet high throughout.
 
-STOREY. That portion of a building included between the upper surface of a floor and the upper surface of the floor or roof next above.
+STOREY. The space between the top of one floor and the top of the next floor or roof above.
 
-TRAVEL DISTANCE. The length of the path of egress travel measured from the most remote point within a storey along the natural and unobstructed path to the entrance of the nearest exit.
+TRAVEL DISTANCE. The length of the path a person walks from the most remote point on a storey to the nearest exit door, following the natural route.
 
 # CHAPTER 3 OCCUPANCY CLASSIFICATION
 
@@ -101,7 +101,7 @@ TRAVEL DISTANCE. The length of the path of egress travel measured from the most 
 
 ### 302.1 Occupancy classification
 
-Every structure or portion thereof shall be classified into one of the occupancy groups listed in Table 302.1. A room used for a purpose that is incidental to the main occupancy and that occupies not more than 10 percent of the floor area of the storey may be classified with the main occupancy.
+Every structure or portion thereof shall be classified into one of the occupancy groups listed in Table 302.1. A room whose use is incidental to the main occupancy, and which takes up no more than 10 percent of the storey's floor area, may simply be classified with the main occupancy.
 
 TABLE 302.1 OCCUPANCY GROUPS
 
@@ -126,12 +126,12 @@ Where a building contains more than one occupancy group, it shall comply with Se
 
 ### 303.1 Assembly Group A
 
-Group A occupancy includes the use of a building or portion thereof for the gathering of persons for civic, social, or religious functions, recreation, food or drink consumption, or awaiting transportation.
+A building, or part of one, is Group A when people gather there for civic, social, or religious functions, recreation, eating or drinking, or waiting for transportation.
 
 Exceptions:
-1. A room with an occupant load of fewer than 50 persons that is accessory to another occupancy shall be classified with that occupancy.
-2. A building or tenant space used for assembly purposes with an occupant load of fewer than 50 persons shall be classified as Group B.
-3. Assembly areas that are accessory to Group E occupancies are not considered separate occupancies except when applying the fire protection provisions of Chapter 9.
+1. A gathering room for fewer than 50 people that serves another occupancy takes the classification of that occupancy.
+2. A building or tenant space used for gatherings of fewer than 50 people is Group B.
+3. Gathering areas that serve a Group E school are not a separate occupancy, except when the fire protection provisions of Chapter 9 are applied.
 
 ### 303.2 Assembly subgroups
 
@@ -141,7 +141,7 @@ Group A occupancies are divided into subgroups A-1 through A-5 according to the 
 
 ### 304.1 Business Group B
 
-Group B occupancy includes the use of a building or portion thereof for office, professional, or service transactions, including the storage of records and accounts. Training and skill development rooms not within a school, with an occupant load of fewer than 50, are Group B.
+A building, or part of one, is Group B when it is used for office work, professional services, or service transactions, including keeping records and accounts. A training or skills room outside a school, holding fewer than 50 people, is also Group B.
 
 ## SECTION 310 RESIDENTIAL GROUP R
 
@@ -155,7 +155,7 @@ Group R includes the use of a building or portion thereof for sleeping purposes 
 
 ### 503.1 General
 
-The building height and area shall not exceed the limits specified in Table 503.1 based on the type of construction determined in Chapter 6, except as modified by Section 504 for height and Section 506 for area.
+A building shall be no taller and no larger than Table 503.1 allows for its construction type under Chapter 6, subject to the height adjustments of Section 504 and the area adjustments of Section 506.
 
 TABLE 503.1 ALLOWABLE BUILDING HEIGHT IN STOREYS ABOVE GRADE PLANE
 
@@ -172,11 +172,11 @@ TABLE 503.1 ALLOWABLE BUILDING HEIGHT IN STOREYS ABOVE GRADE PLANE
 
 ### 504.1 General
 
-The height of a building shall be measured from the grade plane to the average height of the highest roof surface, and shall not exceed the limits of Table 503.1 as increased by Section 504.2.
+Building height is measured from the grade plane to the average height of the highest roof surface. It shall not exceed Table 503.1 as adjusted by Section 504.2.
 
 ### 504.2 Automatic sprinkler system increase
 
-Where a building is equipped throughout with an automatic sprinkler system installed in accordance with Section 903.3.1.1, the maximum number of storeys in Table 503.1 is increased by one storey and the maximum height in feet is increased by 20 feet.
+A building sprinklered throughout under Section 903.3.1.1 may be one storey taller, and 20 feet higher, than Table 503.1 allows.
 
 Exception: The increase does not apply to Group H-1, H-2, H-3, or H-5 occupancies, or to Group I-2 occupancies of Type IIB, III, IV, or V construction.
 
@@ -184,11 +184,11 @@ Exception: The increase does not apply to Group H-1, H-2, H-3, or H-5 occupancie
 
 ### 505.1 General
 
-A mezzanine that complies with Section 505.2 is considered a portion of the storey below and shall not contribute to the building area or the number of storeys.
+A mezzanine complying with Section 505.2 counts as part of the storey it opens onto. It adds nothing to the building area and does not count as a storey.
 
 ### 505.2 Area limitation
 
-The aggregate area of mezzanines within a room shall not exceed one-third of the floor area of that room. The enclosed portion of a room shall not be included in the room area used to determine the maximum mezzanine area.
+All mezzanines in a room, taken together, shall cover no more than one-third of that room's floor area. When computing the room area, leave out any part of the room that is enclosed.
 
 Exceptions:
 1. In Type I or Type II construction with an automatic sprinkler system throughout, the aggregate mezzanine area may be increased to one-half of the floor area of the room, provided the building is not more than two storeys above grade plane.
@@ -196,13 +196,13 @@ Exceptions:
 
 ### 505.3 Egress
 
-Each occupant of a mezzanine shall have access to not fewer than two independent means of egress where the common path of egress travel exceeds the limit of Section 1006.2.1. A single means of egress is permitted where the occupant load does not exceed 10 persons.
+Where the common path of egress travel from a mezzanine exceeds the limit of Section 1006.2.1, every occupant of the mezzanine shall have at least two independent means of egress. One means of egress is enough where the mezzanine holds no more than 10 people.
 
 ## SECTION 506 BUILDING AREA
 
 ### 506.1 General
 
-The allowable area of a building shall be determined from Table 506.1 for the applicable occupancy and construction type, increased by the frontage allowance of Section 506.3 and the sprinkler allowance of Section 506.2.
+Start with the Table 506.1 area for the occupancy and construction type, then add the frontage allowance of Section 506.3 and the sprinkler allowance of Section 506.2.
 
 TABLE 506.1 ALLOWABLE AREA PER STOREY IN SQUARE FEET
 
@@ -216,11 +216,11 @@ TABLE 506.1 ALLOWABLE AREA PER STOREY IN SQUARE FEET
 
 ### 506.2 Sprinkler allowance
 
-Where a building is equipped throughout with an automatic sprinkler system in accordance with Section 903.3.1.1, the tabular area of Table 506.1 is permitted to be multiplied by 3 for a single-storey building and by 2 for a multistorey building.
+Where the building is sprinklered throughout under Section 903.3.1.1, multiply the Table 506.1 area by 3 for a one-storey building, or by 2 for a building of two or more storeys.
 
 ### 506.3 Frontage allowance
 
-Where a building has more than 25 percent of its perimeter on a public way or open space having a width of not less than 20 feet, the tabular area is permitted to be increased by up to 75 percent as computed by the frontage formula in Section 506.3.3.
+A building with more than 25 percent of its perimeter facing a public way or open space at least 20 feet wide earns a frontage allowance of up to 75 percent of the tabular area, computed by the formula in Section 506.3.3.
 
 ### 506.3.3 Frontage formula
 
@@ -230,15 +230,15 @@ The frontage increase shall be computed as If = (F/P - 0.25) multiplied by W/30,
 
 ### 508.1 General
 
-Each portion of a building shall be classified individually. Where a building contains more than one occupancy group, the building shall comply with the accessory occupancy provisions of Section 508.2, the nonseparated provisions of Section 508.3, or the separated provisions of Section 508.4, or a combination.
+Classify each part of a building on its own. A building holding more than one occupancy group shall then follow the accessory rules of Section 508.2, the nonseparated rules of Section 508.3, the separated rules of Section 508.4, or a mix of them.
 
 ### 508.2 Accessory occupancies
 
-Accessory occupancies are those that are ancillary to the main occupancy and that occupy not more than 10 percent of the floor area of the storey in which they are located and not more than the tabular value in Table 506.1 for the accessory occupancy.
+An accessory occupancy is one that supports the main occupancy, takes up no more than 10 percent of its storey's floor area, and stays within the Table 506.1 area for the accessory use.
 
 ### 508.4 Separated occupancies
 
-Where separated occupancies are used, each occupancy shall be separated from the others by fire barriers and horizontal assemblies having the ratings shown in Table 508.4.
+Under the separated approach, each occupancy shall be walled off from the others by fire barriers and horizontal assemblies rated as shown in Table 508.4.
 
 TABLE 508.4 REQUIRED SEPARATION OF OCCUPANCIES IN HOURS
 
@@ -257,21 +257,21 @@ TABLE 508.4 REQUIRED SEPARATION OF OCCUPANCIES IN HOURS
 
 ### 707.1 General
 
-Fire barriers installed as required elsewhere in this code shall comply with this section. Fire barriers are used for shaft enclosures, exit enclosures, exit passageways, horizontal exits, and separation of occupancies under Section 508.4.
+Wherever this code calls for a fire barrier, the barrier shall comply with this section. Fire barriers enclose shafts, exit stairs, and exit passageways, form horizontal exits, and separate occupancies under Section 508.4.
 
 ### 707.3 Fire-resistance rating
 
-The fire-resistance rating of a fire barrier shall be not less than the rating required by the section that requires the barrier. Exit enclosures connecting four or more storeys shall have a rating of not less than 2 hours; those connecting fewer than four storeys shall have a rating of not less than 1 hour.
+A fire barrier carries whatever rating the section that requires it demands. An exit enclosure that connects four or more storeys shall be rated at least 2 hours; one that connects fewer than four storeys shall be rated at least 1 hour.
 
 ### 707.5 Continuity
 
-Fire barriers shall extend from the top of the floor assembly below to the underside of the floor or roof slab above and shall be securely attached. The supporting construction shall be protected to afford the required fire-resistance rating of the fire barrier supported.
+A fire barrier shall run without a gap from the top of the floor below to the underside of the floor or roof deck above, and shall be fastened to both. Whatever holds the barrier up shall be protected to at least the barrier's own rating.
 
 Exception: Shaft enclosures are permitted to terminate at a top enclosure that has a fire-resistance rating not less than the shaft.
 
 ### 707.6 Openings
 
-Openings in a fire barrier shall be protected in accordance with Section 716. The aggregate width of openings at any floor level shall not exceed 25 percent of the length of the wall, and no single opening shall exceed 156 square feet.
+Openings in a fire barrier shall be protected per Section 716. On any floor, the combined width of openings shall not exceed one-quarter of the wall's length, and no single opening shall be larger than 156 square feet.
 
 Exceptions:
 1. Openings are not limited to 156 square feet where the adjoining spaces are equipped throughout with an automatic sprinkler system.
@@ -281,7 +281,7 @@ Exceptions:
 
 ### 708.1 General
 
-Fire partitions are required for walls separating dwelling units, sleeping units, tenant spaces in covered mall buildings, corridor walls as required by Section 1020.1, and elevator lobby separations.
+A fire partition is required wherever this code calls for one: between dwelling units, between sleeping units, between tenant spaces in a covered mall, along corridors where Section 1020.1 requires a rating, and around elevator lobbies.
 
 ### 708.3 Fire-resistance rating
 
@@ -295,7 +295,7 @@ Exceptions:
 
 ### 716.1 General
 
-Opening protectives required by other sections of this code shall comply with this section. Fire door assemblies and fire window assemblies shall be tested and listed for the rating shown in Table 716.1.
+Wherever another section of this code requires an opening protective, it shall comply with this section. Fire door and fire window assemblies shall be tested and listed for the rating shown in Table 716.1.
 
 TABLE 716.1 MINIMUM FIRE DOOR RATINGS
 
@@ -311,7 +311,7 @@ TABLE 716.1 MINIMUM FIRE DOOR RATINGS
 
 ### 716.2 Self-closing devices
 
-Fire doors shall be self-closing or automatic-closing in accordance with this section. Automatic-closing doors shall be activated by smoke detection.
+Every fire door shall close on its own, either with a self-closing device or with an automatic closer released by smoke detection.
 
 # CHAPTER 9 FIRE PROTECTION SYSTEMS
 
@@ -323,37 +323,37 @@ Approved automatic sprinkler systems shall be provided in the locations describe
 
 ### 903.2.1 Group A
 
-An automatic sprinkler system shall be provided throughout buildings and portions thereof used as Group A occupancies where one of the following conditions exists: the fire area exceeds 12,000 square feet; the fire area has an occupant load of 300 or more; or the fire area is located on a floor other than a level of exit discharge.
+A Group A fire area shall be sprinklered throughout when any one of the following is true: the fire area is larger than 12,000 square feet; its occupant load is 300 or more; or it sits on a floor other than a level of exit discharge.
 
 ### 903.2.2 Group B ambulatory care
 
-An automatic sprinkler system shall be installed throughout the entire floor containing an ambulatory care facility where four or more care recipients are incapable of self-preservation at any time, and on all floors between that floor and the level of exit discharge.
+Where an ambulatory care facility may at any time hold four or more care recipients who cannot save themselves, its entire floor shall be sprinklered, along with every floor between that floor and the level of exit discharge.
 
 ### 903.2.7 Group M
 
-An automatic sprinkler system shall be provided throughout buildings containing a Group M occupancy where the fire area exceeds 12,000 square feet, where the fire area is located more than three storeys above grade plane, or where the combined area of all Group M fire areas on all floors exceeds 24,000 square feet.
+A building containing a Group M occupancy shall be sprinklered throughout when its Group M fire area is larger than 12,000 square feet, sits more than three storeys above the grade plane, or when all Group M fire areas on all floors add up to more than 24,000 square feet.
 
 ### 903.2.8 Group R
 
-An automatic sprinkler system shall be provided throughout all buildings with a Group R fire area.
+Every building that contains a Group R fire area shall be sprinklered throughout.
 
 Exception: A Group R-3 building where every dwelling unit has an exterior exit door at grade and the building is not more than two storeys above grade plane, where permitted by the Model Residential Code.
 
 ### 903.3 Installation requirements
 
-Automatic sprinkler systems shall be designed and installed in accordance with Section 903.3.1.1 for general systems or Section 903.3.1.2 for residential systems in Group R occupancies not more than four storeys in height.
+Sprinkler systems shall follow Section 903.3.1.1 for general systems, or Section 903.3.1.2 for residential systems in Group R buildings of no more than four storeys.
 
 ### 903.3.1.1 General sprinkler standard
 
-Where the provisions of this code require that a building be equipped throughout with an automatic sprinkler system in accordance with this section, sprinklers shall be installed throughout in accordance with the Model Sprinkler Standard, MSS 13.
+Where this code requires a building to be sprinklered throughout under this section, the system shall be designed and installed to the Model Sprinkler Standard, MSS 13, in every part of the building.
 
 ### 903.3.1.2 Residential sprinkler standard
 
-Automatic sprinkler systems in Group R occupancies not more than four storeys above grade plane are permitted to be installed throughout in accordance with the Model Residential Sprinkler Standard, MSS 13R. Where such a system is used, the height and area increases of Sections 504.2 and 506.2 are not permitted.
+In Group R buildings of no more than four storeys above the grade plane, the sprinkler system may instead follow the Model Residential Sprinkler Standard, MSS 13R. A building that uses MSS 13R forfeits the height and area increases of Sections 504.2 and 506.2.
 
 ### 903.4 Sprinkler system supervision
 
-Valves controlling the water supply for sprinkler systems, water-flow switches, and tamper switches shall be electrically supervised by a listed fire alarm control unit.
+Every valve that controls the water supply to a sprinkler system, every water-flow switch, and every tamper switch shall be electrically monitored by a listed fire alarm control unit.
 
 Exceptions:
 1. Automatic sprinkler systems protecting one- and two-family dwellings.
@@ -364,21 +364,21 @@ Exceptions:
 
 ### 907.2 Where required
 
-A fire alarm system shall be installed in accordance with Sections 907.2.1 through 907.2.9. Where automatic sprinkler protection installed in accordance with Section 903.3.1.1 is provided and connected to the building fire alarm system, automatic heat detection is not required.
+Fire alarm systems shall be installed as set out in Sections 907.2.1 through 907.2.9. Where the building is sprinklered under Section 903.3.1.1 and the sprinkler system reports to the fire alarm system, no separate automatic heat detection is needed.
 
 ### 907.2.1 Group A
 
-A manual fire alarm system that activates the occupant notification system shall be installed in Group A occupancies having an occupant load of 300 or more persons.
+A Group A occupancy with an occupant load of 300 or more shall have a manual fire alarm system that triggers occupant notification.
 
 Exception: Manual fire alarm boxes are not required where the building is equipped throughout with an automatic sprinkler system and the occupant notification appliances will activate on water flow.
 
 ### 907.2.2 Group B
 
-A manual fire alarm system shall be installed in Group B occupancies where the combined occupant load of all floors is 500 or more persons, the occupant load is more than 100 persons above or below the lowest level of exit discharge, or the building contains an ambulatory care facility.
+A Group B occupancy shall have a manual fire alarm system when the occupant load of all floors together is 500 or more, when more than 100 people are located above or below the lowest level of exit discharge, or when the building holds an ambulatory care facility.
 
 ### 907.2.9 Group R-2
 
-A fire alarm system shall be installed in Group R-2 occupancies where any dwelling unit or sleeping unit is located three or more storeys above the lowest level of exit discharge, or the building contains more than 16 dwelling units.
+A Group R-2 building shall have a fire alarm system when any dwelling or sleeping unit sits three or more storeys above the lowest level of exit discharge, or when the building holds more than 16 dwelling units.
 
 Exceptions:
 1. A fire alarm system is not required where each dwelling unit has an exterior exit door at grade.
@@ -390,11 +390,11 @@ Exceptions:
 
 ### 1001.1 General
 
-Buildings or portions thereof shall be provided with a means of egress system as required by this chapter. The provisions of this chapter shall control the design, construction, and arrangement of means of egress components required to provide an approved means of egress from structures and portions thereof.
+Every building, and every part of one, shall have a means of egress system that meets this chapter. This chapter governs how egress components are designed, built, and arranged so that people can get out.
 
 ### 1001.2 Minimum requirements
 
-It shall be unlawful to alter a building or structure in a manner that will reduce the number of exits or the minimum width or required capacity of the means of egress to less than required by this code.
+No building may be altered in a way that leaves it with fewer exits, or a narrower or lower-capacity means of egress, than this code requires.
 
 ## SECTION 1003 GENERAL MEANS OF EGRESS
 
@@ -411,21 +411,21 @@ Exceptions:
 
 ### 1003.3 Protruding objects
 
-Protruding objects shall not reduce the minimum clear width of accessible routes. Objects mounted on walls with their leading edges between 27 inches and 80 inches above the floor shall not project more than 4 inches horizontally into the circulation path.
+A wall-mounted object whose leading edge is between 27 and 80 inches above the floor may stick out no more than 4 inches into the path of travel. No object may narrow an accessible route below its required clear width.
 
 ### 1003.6 Means of egress continuity
 
-The path of egress travel along a means of egress shall not be interrupted by a building element other than a means of egress component. Obstructions shall not be placed in the minimum width or required capacity of a means of egress component except projections permitted by this chapter.
+Once a person is on an egress path, nothing other than another egress component may break that path. Fixtures, furnishings, and equipment shall stay clear of the required width and capacity of every egress component; only the projections this chapter specifically allows may intrude.
 
 ## SECTION 1004 OCCUPANT LOAD
 
 ### 1004.1 Design occupant load
 
-In determining means of egress requirements, the number of occupants for whom means of egress facilities are provided shall be determined in accordance with this section.
+Means of egress are sized for a design occupant load. This section says how to compute it.
 
 ### 1004.5 Areas without fixed seating
 
-The number of occupants shall be computed at the rate of one occupant per unit of area as prescribed in Table 1004.5. For areas without fixed seating, the occupant load shall be not less than that number determined by dividing the floor area assigned to that use by the occupant load factor for that use.
+For a space without fixed seats, divide the floor area assigned to each use by the occupant load factor for that use in Table 1004.5 and round up. The design occupant load of the space is the sum of those results and shall never be taken as less than that sum.
 
 Exception: Where approved by the building official, the actual number of occupants for whom each occupied space, floor, or building is designed, although less than those determined by calculation, shall be permitted to be used in the determination of the design occupant load.
 
@@ -451,43 +451,43 @@ TABLE 1004.5 MAXIMUM FLOOR AREA ALLOWANCES PER OCCUPANT
 
 ### 1004.5.1 Increased occupant load
 
-The occupant load permitted in any building or portion thereof is permitted to be increased from that number established for the occupancies in Table 1004.5, provided that all other requirements of the code are met based on such modified number and the occupant load does not exceed one occupant per 7 square feet of occupiable floor space.
+A larger occupant load than Table 1004.5 yields may be used for a space, provided every other requirement of this code is satisfied for that larger number. The increased occupant load shall never exceed one occupant for each 7 square feet of occupiable floor space.
 
 ### 1004.6 Fixed seating
 
-For areas having fixed seats and aisles, the occupant load shall be determined by the number of fixed seats installed. For areas having fixed seating without dividing arms, the occupant load shall be not less than the number of seats based on one person for each 18 inches of seating length.
+Where seats and aisles are fixed in place, the occupant load equals the number of seats installed. Where the fixed seating is a bench or pew without dividing arms, count one person for every 18 inches of seat length, and use at least that number.
 
 ### 1004.9 Posting of occupant load
 
-Every room or space that is an assembly occupancy shall have the occupant load of the room or space posted in a conspicuous place near the main exit or exit access doorway from the room or space. Posted signs shall be of an approved legible permanent design and shall be maintained by the owner.
+In every assembly room, the owner shall post the room's design occupant load on a durable, legible sign placed where it is plainly visible beside the main exit or exit access door, and shall keep that sign in place.
 
 ## SECTION 1005 MEANS OF EGRESS SIZING
 
 ### 1005.1 General
 
-All portions of the means of egress system shall be sized in accordance with this section to provide the required capacity for the occupant load served.
+Every part of the means of egress shall be wide enough, under this section, to carry the occupant load it serves.
 
 ### 1005.3.1 Stairways
 
-The capacity, in inches, of means of egress stairways shall be calculated by multiplying the occupant load served by such stairways by a means of egress capacity factor of 0.3 inch per occupant.
+Required stair width in inches is the occupant load served multiplied by 0.3 inch per occupant.
 
-Exception: For other than Group H and I-2 occupancies, the capacity factor is 0.2 inch per occupant in buildings equipped throughout with an automatic sprinkler system in accordance with Section 903.3.1.1 and an emergency voice/alarm communication system.
+Exception: In buildings other than Group H and I-2 that are sprinklered throughout per Section 903.3.1.1 and have an emergency voice/alarm communication system, the multiplier is 0.2 inch per occupant.
 
 ### 1005.3.2 Other egress components
 
-The capacity, in inches, of means of egress components other than stairways shall be calculated by multiplying the occupant load served by such component by a means of egress capacity factor of 0.2 inch per occupant.
+Required width in inches of every egress component other than a stair is the occupant load served multiplied by 0.2 inch per occupant.
 
-Exception: For other than Group H and I-2 occupancies, the capacity factor is 0.15 inch per occupant in buildings equipped throughout with an automatic sprinkler system in accordance with Section 903.3.1.1 and an emergency voice/alarm communication system.
+Exception: In buildings other than Group H and I-2 that are sprinklered throughout per Section 903.3.1.1 and have an emergency voice/alarm communication system, the multiplier is 0.15 inch per occupant.
 
 ## SECTION 1006 NUMBER OF EXITS AND EXIT ACCESS DOORWAYS
 
 ### 1006.2 Egress from spaces
 
-Rooms, areas, or spaces shall be provided with the number of exit access doorways required by Table 1006.2.1 based on the occupant load and the common path of egress travel distance.
+Every room, area, or space shall have the number of exit access doorways that Table 1006.2.1 requires for its occupant load and its common path of egress travel.
 
 ### 1006.2.1 Egress based on occupant load and common path of egress travel distance
 
-Two exits or exit access doorways from any space shall be provided where the design occupant load or the common path of egress travel distance exceeds the values listed in Table 1006.2.1.
+A space needs two exits or exit access doorways as soon as either its design occupant load or its common path of egress travel exceeds the value in Table 1006.2.1.
 
 TABLE 1006.2.1 SPACES WITH ONE EXIT OR EXIT ACCESS DOORWAY
 
@@ -504,7 +504,7 @@ TABLE 1006.2.1 SPACES WITH ONE EXIT OR EXIT ACCESS DOORWAY
 
 ### 1006.3.1 Egress based on occupant load
 
-Each storey shall have the minimum number of exits as specified in Table 1006.3.1. A single exit is permitted from a storey only where the conditions of Section 1006.3.2 are met.
+Each storey shall have at least the number of exits in Table 1006.3.1. A storey may have a single exit only where Section 1006.3.2 allows it.
 
 TABLE 1006.3.1 MINIMUM NUMBER OF EXITS PER STOREY
 
@@ -516,17 +516,17 @@ TABLE 1006.3.1 MINIMUM NUMBER OF EXITS PER STOREY
 
 ### 1006.3.2 Single exits
 
-A single exit or access to a single exit is permitted from any storey where the storey is a first or second storey above grade plane, the occupant load does not exceed 49 for Group B, F, M, S, or U, and the common path of egress travel does not exceed the value in Table 1006.2.1.
+A storey may have one exit, or access to only one exit, when all of the following hold: it is the first or second storey above the grade plane; its occupant load is no more than 49 in Group B, F, M, S, or U; and its common path of egress travel is within Table 1006.2.1.
 
 ## SECTION 1010 DOORS, GATES AND TURNSTILES
 
 ### 1010.1 Doors
 
-Means of egress doors shall meet the requirements of this section. Doors serving a means of egress shall be readily distinguishable from the adjacent construction and finishes such that the doors are easily recognisable as doors.
+Every door in a means of egress shall meet this section. A door on an egress path shall stand out from the surrounding wall and finishes clearly enough that anyone can tell it is a door.
 
 ### 1010.1.1 Size of doors
 
-The required capacity of each door opening shall be sufficient for the occupant load thereof and shall provide a minimum clear opening width of 32 inches. The maximum width of a swinging door leaf shall be 48 inches nominal. Means of egress doors shall have a minimum clear height of 80 inches.
+Each door opening shall have the capacity its occupant load requires and shall provide a clear opening at least 32 inches wide. No single swinging leaf shall be wider than 48 inches. Egress doors shall provide at least 80 inches of clear height.
 
 Exceptions:
 1. In Group R-2 and R-3 dwelling units that are not required to be accessible, the minimum clear width is 30 inches.
@@ -535,7 +535,7 @@ Exceptions:
 
 ### 1010.1.2 Door swing
 
-Egress doors shall be side-hinged swinging doors. Doors shall swing in the direction of egress travel where serving a room or area with an occupant load of 50 or more persons or a Group H occupancy.
+Egress doors shall be side-hinged and shall swing. Where a door serves a room or area with an occupant load of 50 or more, or serves a Group H occupancy, it shall swing in the direction people leave.
 
 Exceptions:
 1. Private garages, office areas, factory and storage areas with an occupant load of 10 or fewer.
@@ -544,17 +544,17 @@ Exceptions:
 
 ### 1010.1.9 Door operations
 
-Egress doors shall be readily openable from the egress side without the use of a key or special knowledge or effort. Locks and latches shall be permitted to prevent operation of doors only where the door is not required to be readily openable under the conditions of this section.
+A person leaving through an egress door shall be able to open it from the egress side at any time without a key, a tool, or any special knowledge. A lock or latch that would prevent that is permitted only in the situations listed below.
 
 Exceptions:
 1. Places of detention or restraint.
-2. In Group A having an occupant load of 300 or less, Groups B, F, M, and S, the main door is permitted to be equipped with key-operated locking devices from the egress side where a readily visible durable sign is posted on the egress side stating THIS DOOR TO REMAIN UNLOCKED WHEN THIS SPACE IS OCCUPIED.
+2. In Group A having an occupant load of 300 or less, Groups B, F, M, and S, the main door is permitted to be equipped with key-operated locking devices from the egress side where a readily visible durable sign is posted on the egress side stating THIS DOOR MUST STAY UNLOCKED WHILE THE BUILDING IS OCCUPIED.
 
 ## SECTION 1011 STAIRWAYS
 
 ### 1011.2 Width and capacity
 
-The required capacity of stairways shall be determined as specified in Section 1005.1, but the minimum width shall be not less than 44 inches.
+Size stairways for capacity under Section 1005.1, but never narrower than 44 inches.
 
 Exceptions:
 1. Stairways serving an occupant load of less than 50 shall have a width of not less than 36 inches.
@@ -562,11 +562,11 @@ Exceptions:
 
 ### 1011.3 Headroom
 
-Stairways shall have a headroom clearance of not less than 80 inches measured vertically from a line connecting the edge of the nosings. Such headroom shall be continuous above the stairway to the point where the line intersects the landing below.
+Every stairway shall provide at least 80 inches of clear headroom, measured straight up from a line drawn along the tread nosings. That clearance shall continue until the nosing line meets the landing below.
 
 ### 1011.5 Stair treads and risers
 
-Stair riser heights shall be 7 inches maximum and 4 inches minimum. Rectangular tread depths shall be 11 inches minimum measured horizontally between the vertical planes of the foremost projection of adjacent treads. The tolerance between the largest and smallest riser height or between the largest and smallest tread depth within any flight shall not exceed 3/8 inch.
+Risers shall be no taller than 7 inches and no shorter than 4 inches. Rectangular treads shall be at least 11 inches deep, measured nosing to nosing in plan. Within one flight, the tallest and shortest riser, or the deepest and shallowest tread, shall differ by no more than 3/8 inch.
 
 Exceptions:
 1. Within dwelling units in Group R-2 and R-3, the maximum riser height is 7-3/4 inches and the minimum tread depth is 10 inches.
@@ -574,11 +574,11 @@ Exceptions:
 
 ### 1011.10 Spiral stairways
 
-Spiral stairways are permitted to be used as a component in the means of egress only within dwelling units or from a space not more than 250 square feet in area serving not more than five occupants. A spiral stairway shall have a 7-1/2-inch minimum clear tread depth at a point 12 inches from the narrow edge, and a riser height of not more than 9-1/2 inches.
+A spiral stairway may serve as part of a required means of egress only inside a dwelling unit, or from a room of no more than 250 square feet that serves no more than five people. Its treads shall be at least 7-1/2 inches deep at a point 12 inches in from the narrow edge, and its risers no taller than 9-1/2 inches.
 
 ### 1011.11 Handrails
 
-Flights of stairs shall have handrails on each side and shall comply with Section 1014.
+Every flight of stairs shall have a handrail on each side, built to Section 1014.
 
 Exceptions:
 1. Stairways within dwelling units and spiral stairways are permitted to have a handrail on one side only.
@@ -588,17 +588,17 @@ Exceptions:
 
 ### 1014.2 Height
 
-Handrail height, measured above stair tread nosings or finish surface of ramp slope, shall be uniform, not less than 34 inches and not more than 38 inches.
+Handrails shall be set at a constant height between 34 and 38 inches, measured vertically from the tread nosings on a stair or from the walking surface on a ramp.
 
 ### 1014.3 Handrail graspability
 
-Handrails with a circular cross section shall have an outside diameter of not less than 1-1/4 inches and not more than 2 inches. Where the handrail is not circular, it shall have a perimeter dimension of not less than 4 inches and not more than 6-1/4 inches with a maximum cross-section dimension of 2-1/4 inches.
+A round handrail shall be between 1-1/4 and 2 inches in outside diameter. A handrail of any other shape shall have a perimeter between 4 and 6-1/4 inches and shall be no more than 2-1/4 inches across in any direction.
 
 ## SECTION 1017 EXIT ACCESS TRAVEL DISTANCE
 
 ### 1017.1 General
 
-Travel distance within the exit access portion of the means of egress system shall be in accordance with this section. Exits shall be located so that the maximum length of exit access travel, measured from the most remote point to the entrance of the nearest exit along the natural and unobstructed path of egress travel, does not exceed the distances in Table 1017.2.
+Exits shall be placed so that no occupant has to travel farther than Table 1017.2 allows, measured from the most remote occupiable point to the nearest exit door along the natural, unobstructed walking path.
 
 ### 1017.2 Limitations
 
@@ -621,13 +621,13 @@ Exceptions:
 
 ### 1017.3 Measurement
 
-Exit access travel distance shall be measured on the floor or other walking surface along the centreline of the natural path of travel, starting from the most remote point, curving around any corners or obstructions with a clearance of 12 inches, and ending at the entrance to the exit.
+Measure travel distance along the centreline of the natural path a person would walk, on the floor or other walking surface. Begin at the most remote occupiable point, keep 12 inches clear of corners and obstructions, and end at the door into the exit.
 
 ## SECTION 1020 CORRIDORS
 
 ### 1020.1 Construction
 
-Corridors shall be fire-resistance rated in accordance with Table 1020.1. The corridor walls required to be fire-resistance rated shall comply with Section 708 for fire partitions.
+Corridor walls shall be rated as Table 1020.1 requires, and where a rating is required the walls shall be built as fire partitions under Section 708.
 
 TABLE 1020.1 CORRIDOR FIRE-RESISTANCE RATING IN HOURS
 
@@ -640,7 +640,7 @@ TABLE 1020.1 CORRIDOR FIRE-RESISTANCE RATING IN HOURS
 
 ### 1020.2 Width and capacity
 
-The required capacity of corridors shall be determined as specified in Section 1005.1, but the minimum width shall be not less than 44 inches.
+Size corridors for capacity under Section 1005.1, but never narrower than 44 inches.
 
 Exceptions:
 1. Twenty-four inches for access to and utilisation of electrical, mechanical, or plumbing systems or equipment.
@@ -652,12 +652,12 @@ Exceptions:
 
 ### 1020.4 Dead ends
 
-Where more than one exit or exit access doorway is required, the exit access shall be arranged such that there are no dead ends in corridors more than 20 feet in length.
+Where a space must have more than one exit or exit access doorway, its corridors shall be laid out so that no dead end is longer than 20 feet.
 
 Exceptions:
 1. In occupancies in Group I-3 of Occupancy Condition 2, 3, or 4, the dead end in a corridor shall not exceed 50 feet.
-2. In occupancies in Groups B, E, F, I-1, M, R-1, R-2, R-4, S, and U where the building is equipped throughout with an automatic sprinkler system in accordance with Section 903.3.1.1, the length of the dead-end corridors shall not exceed 50 feet.
-3. A dead-end corridor shall not be limited in length where the length of the dead-end corridor is less than 2.5 times the least width of the dead-end corridor.
+2. In Groups B, E, F, I-1, M, R-1, R-2, R-4, S, and U, a dead end may be up to 50 feet long where the building is sprinklered throughout per Section 903.3.1.1.
+3. A dead end of any length is permitted where its length is less than 2.5 times its least width.
 
 # CHAPTER 11 ACCESSIBILITY
 
@@ -665,11 +665,11 @@ Exceptions:
 
 ### 1104.1 Site arrival points
 
-At least one accessible route within the site shall be provided from public transportation stops, accessible parking, accessible passenger loading zones, and public streets or sidewalks to the accessible building entrance served.
+At least one accessible route shall run from each public transportation stop, accessible parking space, accessible passenger loading zone, and public street or sidewalk on the site to the accessible building entrance it serves.
 
 ### 1104.4 Multilevel buildings and facilities
 
-At least one accessible route shall connect each accessible level, including mezzanines, in multilevel buildings and facilities.
+In a building with more than one level, at least one accessible route shall link every accessible level, including mezzanines.
 
 Exceptions:
 1. An accessible route is not required to storeys and mezzanines that have an aggregate area of not more than 3,000 square feet and are located above and below accessible levels.
@@ -679,7 +679,7 @@ Exceptions:
 
 ### 1105.1 Public entrances
 
-In addition to accessible entrances required by Sections 1105.1.1 through 1105.1.6, at least 60 percent of all public entrances shall be accessible.
+Beyond the specific entrances that Sections 1105.1.1 through 1105.1.6 require to be accessible, at least 60 percent of all public entrances shall be accessible.
 
 # CHAPTER 12 INTERIOR ENVIRONMENT
 
@@ -687,11 +687,11 @@ In addition to accessible entrances required by Sections 1105.1.1 through 1105.1
 
 ### 1208.1 Minimum room widths
 
-Habitable spaces, other than a kitchen, shall be not less than 7 feet in any plan dimension. Kitchens shall have a clear passageway of not less than 3 feet between counter fronts and appliances or counter fronts and walls.
+A habitable room other than a kitchen shall measure at least 7 feet in every plan direction. A kitchen shall keep a clear passage of at least 3 feet between facing counters, or between a counter and a wall.
 
 ### 1208.2 Minimum ceiling heights
 
-Occupiable spaces, habitable spaces, and corridors shall have a ceiling height of not less than 7 feet 6 inches. Bathrooms, toilet rooms, kitchens, storage rooms, and laundry rooms shall have a ceiling height of not less than 7 feet.
+Occupiable rooms, habitable rooms, and corridors shall have ceilings at least 7 feet 6 inches high. Bathrooms, toilet rooms, kitchens, storage rooms, and laundry rooms may have ceilings as low as 7 feet.
 
 Exceptions:
 1. In one- and two-family dwellings, beams or girders spaced not less than 4 feet on centre and projecting not more than 6 inches below the required ceiling height.
@@ -700,6 +700,6 @@ Exceptions:
 
 ### 1208.3 Room area
 
-Every dwelling unit shall have not less than one room that shall have not less than 120 square feet of net floor area. Other habitable rooms shall have a net floor area of not less than 70 square feet.
+Every dwelling unit shall have at least one room of 120 square feet or more of net floor area. Every other habitable room shall have at least 70 square feet.
 
 Exception: Kitchens are not required to be of a minimum floor area.

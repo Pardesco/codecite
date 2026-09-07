@@ -9,7 +9,7 @@ def test_eval_hybrid_meets_gate(db):
     conn, emb = db
     golden = load_golden(GOLDEN)
     assert len(golden) >= 60
-    results = run_eval(conn, emb, golden, ["hybrid", "lexical", "vector"])
+    results = run_eval(conn, emb, golden, ["naive", "hybrid", "lexical", "vector"])
     md = render_report(results)
     assert "| hybrid |" in md
     s = results["hybrid"]["summary"]
@@ -18,3 +18,4 @@ def test_eval_hybrid_meets_gate(db):
     assert s["mrr"] >= 0.6, md
     assert s["abstain"] >= 0.5, md  # hashed-BoW similarities overlap; tune per real model
     assert s["false_abstain"] <= 0.15, md
+    assert results["naive"]["summary"]["hit@5"] < s["hit@5"], md  # section chunking must beat fixed windows

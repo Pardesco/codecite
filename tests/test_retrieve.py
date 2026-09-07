@@ -69,7 +69,7 @@ def test_kind_and_layer_filters(db):
 
 def test_unknown_corpus_errors(db):
     conn, emb = db
-    with pytest.raises(q.NotFound, match="corpus 'nope' not found; available: acme-standards, sample-bc-2026"):
+    with pytest.raises(q.NotFound, match="corpus 'nope' not found; available: acme-standards, sample-bc-2026, sample-bc-2026__naive"):
         search(conn, emb, "anything", corpora=["nope"])
 
 

@@ -17,6 +17,7 @@ class Heading:
     kind: HeadingKind = "section"
     remainder: str = ""  # body text that followed an inline heading (PDF style)
     supersedes: str | None = None
+    alias: str | None = None  # disambiguator when the same number recurs (OAC instruction letter)
 
 
 class Profile(Protocol):

@@ -25,7 +25,8 @@ class LocalSentenceTransformers:
         self.name = f"local-st:{model}"
         self.doc_prefix, self.query_prefix = _PREFIXES.get(model, ("", ""))
         self._m = SentenceTransformer(model, trust_remote_code=True, device=device)
-        self.dimensions = int(self._m.get_sentence_embedding_dimension())
+        get_dim = getattr(self._m, "get_embedding_dimension", None) or self._m.get_sentence_embedding_dimension
+        self.dimensions = int(get_dim())
 
     def embed_documents(self, texts: list[str]) -> list[list[float]]:
         out = self._m.encode([self.doc_prefix + t for t in texts], batch_size=32, normalize_embeddings=True)

@@ -51,6 +51,7 @@ def build_tree(blocks: Iterable[Block], profile: Profile, corpus_title: str = ""
     stack: list[int] = []  # indices of open sections
     pending_caption: Heading | None = None
     last_number_at_depth: dict[tuple[int | None, int], str] = {}
+    numbers_seen: dict[str, int] = {}
 
     def current() -> Section | None:
         return sections[stack[-1]] if stack else None
@@ -83,8 +84,14 @@ def build_tree(blocks: Iterable[Block], profile: Profile, corpus_title: str = ""
                 continue
             del stack[keep:]
             last_number_at_depth[(parent, h.depth)] = h.number
+            number = h.number
+            if number in numbers_seen:  # same number amended twice in one document: keep both
+                numbers_seen[number] += 1
+                number = f"{number}({h.alias or numbers_seen[number]})"
+            else:
+                numbers_seen[number] = 1
             sec = Section(
-                number=h.number,
+                number=number,
                 title=h.title,
                 depth=h.depth,
                 ordinal=len(sections),

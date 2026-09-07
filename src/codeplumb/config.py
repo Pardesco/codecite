@@ -15,7 +15,9 @@ class Settings(BaseSettings):
     ingest_root: str = "./corpus"
     rrf_k: int = 60
     candidate_limit: int = 40
-    abstain_similarity: float = 0.45  # cosine; below this with no strict FTS hit => abstain
+    # cosine floor for abstain (no strict FTS hit and nearest vector below this). Tuned for
+    # nomic-embed-text-v1.5 on the synthetic golden set; re-tune per model with `codeplumb eval`.
+    abstain_similarity: float = 0.66
 
 
 def get_settings() -> Settings:

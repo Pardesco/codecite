@@ -106,7 +106,7 @@ def doctor():
 @app.command()
 def ingest(
     path: Path,
-    corpus: str = typer.Option(..., "--corpus"),
+    corpus: str | None = typer.Option(None, "--corpus", help="required unless --dry-run"),
     layer: str = typer.Option("base", "--layer"),
     profile: str = typer.Option("ibc", "--profile"),
     title: str | None = typer.Option(None, "--title"),
@@ -115,6 +115,7 @@ def ingest(
     force: bool = typer.Option(False, "--force"),
     dry_run: bool = typer.Option(False, "--dry-run"),
     show_tree: bool = typer.Option(False, "--show-tree"),
+    naive: bool = typer.Option(False, "--naive", help="also build the fixed-window baseline corpus '<corpus>__naive' for eval"),
 ):
     """Index a file or directory into a corpus."""
     from codeplumb.ingest import AlreadyIngested, dry_run_tree, ingest_document
@@ -128,11 +129,17 @@ def ingest(
             typer.echo(f"== {f}")
             typer.echo(dry_run_tree(f, profile, layer) if show_tree else "(parsed ok)")
         return
+    if not corpus:
+        typer.echo("--corpus is required", err=True)
+        raise typer.Exit(2)
     conn, emb = _embedder()
     for f in files:
         try:
             stats = ingest_document(conn, f, corpus, layer, profile, emb, title=title if len(files) == 1 else None, version=version, corpus_title=corpus_title, force=force)
             typer.echo(f"{f.name}: {json.dumps(stats)}")
+            if naive:
+                nstats = ingest_document(conn, f, f"{corpus}__naive", layer, profile, emb, title=title if len(files) == 1 else None, version=version, corpus_title=f"{corpus_title or corpus} (naive baseline)", force=force, naive=True)
+                typer.echo(f"{f.name} [naive]: {json.dumps(nstats)}")
         except AlreadyIngested as e:
             typer.echo(f"skip: {e}")
 

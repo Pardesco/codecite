@@ -105,3 +105,29 @@ def split_to_fit(paragraphs: list[str], crumb: str) -> list[str]:
     if cur_paras:
         pieces.append("\n\n".join(cur_paras))
     return pieces
+
+
+def naive_windows(sections: list[Section], window: int = 512) -> list[tuple[int, Chunk]]:
+    """Baseline chunker: fixed token windows over the concatenated document, no breadcrumb,
+    no section awareness. Each window is credited to the section contributing most of its tokens."""
+    enc = _enc()
+    tokens: list[int] = []
+    owner: list[int] = []
+    for si, s in enumerate(sections):
+        parts = [s.label, s.body] + [f"{t.caption}\n{t.markdown}" for t in s.tables]
+        toks = enc.encode("\n".join(p for p in parts if p) + "\n\n")
+        tokens.extend(toks)
+        owner.extend([si] * len(toks))
+    out: list[tuple[int, Chunk]] = []
+    per_section_ordinal: dict[int, int] = {}
+    for start in range(0, len(tokens), window):
+        piece = tokens[start : start + window]
+        owners = owner[start : start + window]
+        si = max(set(owners), key=owners.count)
+        text = enc.decode(piece).strip()
+        if not text:
+            continue
+        k = per_section_ordinal.get(si, 0)
+        per_section_ordinal[si] = k + 1
+        out.append((si, Chunk("body", k, text, text, len(piece), sections[si].page_start, sections[si].page_end)))
+    return out

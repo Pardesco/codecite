@@ -26,7 +26,12 @@ local = ["sentence-transformers>=3.0", "einops>=0.8"]
 codeplumb = "codeplumb.cli:app"
 
 [dependency-groups]
-dev = ["pytest>=8", "pytest-asyncio>=0.24", "ruff>=0.6"]
+dev = [
+    "pillow>=10",
+    "pytest>=8",
+    "pytest-asyncio>=0.24",
+    "ruff>=0.6",
+]
 
 [build-system]
 requires = ["hatchling"]

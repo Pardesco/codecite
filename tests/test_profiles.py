@@ -56,3 +56,13 @@ def test_normalize_number_sorts():
 @pytest.mark.parametrize("raw,want", [("Section 1004.5", "1004.5"), ("§1004.5", "1004.5"), ("Table 1004.5.", "1004.5"), ("1004.5", "1004.5")])
 def test_strip_ref_prefix(raw, want):
     assert strip_ref_prefix(raw) == want
+
+
+def test_oac_instruction_headings():
+    oac = get_profile("oac")
+    h = oac.match(Block("heading", "(A)Modify Section 1001.1to add the following sentence at the end of the paragraph:"), 0)
+    assert (h.number, h.depth, h.supersedes, h.alias) == ("1001.1", 1, "1001.1", "A")
+    assert h.title.startswith("(A) Modify Section 1001.1")
+    t = oac.match(Block("heading", "(J) Replace Table 1020.2 with the following:"), 1)
+    assert t.number == "1020.2" and t.supersedes == "1020.2"
+    assert oac.match(Block("paragraph", "(A) Modify Section 1001.1 ..."), 2) is None  # only bold/heading blocks

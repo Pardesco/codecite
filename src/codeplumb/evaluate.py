@@ -12,6 +12,7 @@ from codeplumb.embed.base import Embedder
 from codeplumb.retrieve import search
 
 KS = (1, 3, 5, 10)
+MODES = ("naive", "vector", "lexical", "hybrid")
 
 
 def load_golden(path: Path) -> list[dict]:
@@ -43,7 +44,11 @@ def run_eval(conn: psycopg.Connection, embedder: Embedder, golden: list[dict], m
         rows = []
         for item in golden:
             expected = [str(x) for x in item.get("expected_sections", [])]
-            res = search(conn, embedder, item["question"], corpora=[item["corpus"]] if item.get("corpus") else None, k=k, mode=mode)
+            if mode == "naive":  # fixed-window baseline lives in '<corpus>__naive', searched with the full hybrid stack
+                corpora = [f"{item['corpus']}__naive"] if item.get("corpus") else None
+                res = search(conn, embedder, item["question"], corpora=corpora, k=k, mode="hybrid")
+            else:
+                res = search(conn, embedder, item["question"], corpora=[item["corpus"]] if item.get("corpus") else None, k=k, mode=mode)
             got = [h["section"]["number"] for h in res["hits"]]
             credits = _hit_credit(expected, got)
             rec = {"id": item["id"], "expected": expected, "got": got[:5], "tags": item.get("tags", [])}

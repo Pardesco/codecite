@@ -1,0 +1,155 @@
+# Ohio Building Code golden set: questions + expected section/rule numbers ONLY. No code text.
+# Run against your own index: `codeplumb fetch-oac 4101:1` (state amendments, free) plus your
+# licensed IBC 2021 PDF on the base layer. Numbers below are OAC 4101:1 rule numbers or the IBC
+# section numbers those rules amend; "(2)" suffixes mark a second section carrying the same number.
+
+- id: oh001
+  question: "What are the conditions for using a temporary door locking device in a school building?"
+  corpus: ohio-bc
+  expected_sections: ["1010.2.16.1.1", "1010.2.16"]
+  tags: [egress, lookup]
+- id: oh002
+  question: "Can a temporary door locking device be used in an office or mercantile building?"
+  corpus: ohio-bc
+  expected_sections: ["1010.2.16.1.2", "1010.2.16"]
+  tags: [egress, paraphrase]
+- id: oh003
+  question: "temporary door locking device operational requirements removable from outside"
+  corpus: ohio-bc
+  expected_sections: ["1010.2.16.2", "1010.2.16"]
+  tags: [egress, lookup]
+- id: oh004
+  question: "Ohio replacement corridor fire-resistance rating table"
+  corpus: ohio-bc
+  expected_sections: ["1020.2"]
+  tags: [egress, table]
+- id: oh005
+  question: "Do Chapter 10 and Chapter 11 both apply when they cover the same content?"
+  corpus: ohio-bc
+  expected_sections: ["1001.1"]
+  tags: [egress, paraphrase]
+- id: oh006
+  question: "adult changing station accessibility requirements"
+  corpus: ohio-bc
+  expected_sections: ["1113", "1113(2)"]
+  tags: [accessibility, lookup]
+- id: oh007
+  question: "accessible route to a mezzanine exception"
+  corpus: ohio-bc
+  expected_sections: ["1104.4"]
+  tags: [accessibility, lookup]
+- id: oh008
+  question: "communication process for items of non-compliance found during plan review"
+  corpus: ohio-bc
+  expected_sections: ["107.6.1", "107"]
+  tags: [admin, lookup]
+- id: oh009
+  question: "What happens when an inspector finds work contrary to the approved construction documents?"
+  corpus: ohio-bc
+  expected_sections: ["108.6.1", "108.6", "108"]
+  tags: [admin, paraphrase]
+- id: oh010
+  question: "right of appeal hearing before the local board of building appeals"
+  corpus: ohio-bc
+  expected_sections: ["110.2", "110"]
+  tags: [admin, lookup]
+- id: oh011
+  question: "How are alternative materials, products, assemblies, and methods of construction approved?"
+  corpus: ohio-bc
+  expected_sections: ["114.3.2", "114.3.1", "114"]
+  tags: [admin, paraphrase]
+- id: oh012
+  question: "certified building departments, personnel, and appeals boards"
+  corpus: ohio-bc
+  expected_sections: ["103"]
+  tags: [admin, lookup]
+- id: oh013
+  question: "certificate of occupancy and certificate of completion"
+  corpus: ohio-bc
+  expected_sections: ["111"]
+  tags: [admin, lookup]
+- id: oh014
+  question: "industrialized units"
+  corpus: ohio-bc
+  expected_sections: ["113"]
+  tags: [admin, lookup]
+- id: oh015
+  question: "Which edition of the International Building Code does Ohio incorporate by reference?"
+  corpus: ohio-bc
+  expected_sections: ["101", "4101:1-1-01"]
+  tags: [admin, paraphrase]
+- id: oh016
+  question: "Ohio amendments for existing buildings IEBC"
+  corpus: ohio-bc
+  expected_sections: ["4101:1-34-01"]
+  tags: [existing, lookup]
+- id: oh017
+  question: "standard for GFRP reinforcement in the special inspections table"
+  corpus: ohio-bc
+  expected_sections: ["1705.3"]
+  tags: [structural, table]
+- id: oh018
+  question: "ground snow loads Ohio"
+  corpus: ohio-bc
+  expected_sections: ["1608.2"]
+  tags: [structural, lookup]
+- id: oh019
+  question: "establishment of flood hazard areas"
+  corpus: ohio-bc
+  expected_sections: ["1612.3", "1612.4"]
+  tags: [structural, lookup]
+- id: oh020
+  question: "When is a geotechnical investigation required?"
+  corpus: ohio-bc
+  expected_sections: ["1803.1", "1803.2"]
+  tags: [foundations, paraphrase]
+- id: oh021
+  question: "truss design drawings"
+  corpus: ohio-bc
+  expected_sections: ["2303.4.1.4.1"]
+  tags: [wood, lookup]
+- id: oh022
+  question: "minimum number of required plumbing fixtures table modifications"
+  corpus: ohio-bc
+  expected_sections: ["2902.1", "2902.1(C)"]
+  tags: [plumbing, table]
+- id: oh023
+  question: "stationary generators standby power"
+  corpus: ohio-bc
+  expected_sections: ["2702.1.1.1", "2702.1.3"]
+  tags: [electrical, lookup]
+- id: oh024
+  question: "Educational Group E occupancy classification"
+  corpus: ohio-bc
+  expected_sections: ["305", "305(2)"]
+  tags: [occupancy, lookup]
+- id: oh025
+  question: "Institutional Group I occupancy classification"
+  corpus: ohio-bc
+  expected_sections: ["308", "308(2)"]
+  tags: [occupancy, lookup]
+- id: oh026
+  question: "Residential Group R occupancy classification"
+  corpus: ohio-bc
+  expected_sections: ["310", "310(2)"]
+  tags: [occupancy, lookup]
+- id: oh027
+  question: "What does 1301.2 say?"
+  corpus: ohio-bc
+  expected_sections: ["1301.2"]
+  tags: [energy, crossref]
+- id: oh028
+  question: "Section 3005.5"
+  corpus: ohio-bc
+  expected_sections: ["3005.5"]
+  tags: [elevators, crossref]
+- id: oh029
+  question: "deck ledger board attachment to a house band joist"
+  corpus: ohio-bc
+  expected_sections: []
+  tags: [not-in-corpus]
+- id: oh030
+  question: "Kentucky Building Code adoption date"
+  corpus: ohio-bc
+  expected_sections: []
+  tags: [not-in-corpus]

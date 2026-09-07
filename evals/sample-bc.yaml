@@ -91,7 +91,7 @@
   expected_sections: ["1010.1.2"]
   tags: [paraphrase, doors]
 - id: q017
-  question: "sign THIS DOOR TO REMAIN UNLOCKED WHEN THIS SPACE IS OCCUPIED"
+  question: "sign THIS DOOR MUST STAY UNLOCKED WHILE THE BUILDING IS OCCUPIED"
   corpus: sample-bc-2026
   expected_sections: ["1010.1.9"]
   expected_kinds: ["exception"]

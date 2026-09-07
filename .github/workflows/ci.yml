@@ -26,8 +26,8 @@ jobs:
       - name: eval gate (fake embedder, synthetic corpus)
         run: |
           uv run codeplumb init
-          uv run codeplumb ingest samples/sample-building-code/model-building-code-2026.md --corpus sample-bc-2026 --layer base --profile ibc --title "Model Building Code" --version 2026 --corpus-title "Model Building Code 2026"
-          uv run codeplumb ingest samples/sample-building-code/local-amendments-2026.md --corpus sample-bc-2026 --layer amendment --profile ibc --title "Local Amendments" --version 2026
-          uv run codeplumb eval evals/sample-bc.yaml --modes hybrid,lexical,vector --report evals/report.md --fail-under hit@5=0.85
+          uv run codeplumb ingest samples/sample-building-code/model-building-code-2026.md --corpus sample-bc-2026 --layer base --profile ibc --title "Model Building Code" --version 2026 --corpus-title "Model Building Code 2026" --naive
+          uv run codeplumb ingest samples/sample-building-code/local-amendments-2026.md --corpus sample-bc-2026 --layer amendment --profile ibc --title "Local Amendments" --version 2026 --naive
+          uv run codeplumb eval evals/sample-bc.yaml --modes naive,hybrid,lexical,vector --report evals/report.md --fail-under hit@5=0.85
       - uses: actions/upload-artifact@v4
         with: { name: eval-report, path: evals/report.md }

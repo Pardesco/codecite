@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from collections import Counter
 from collections.abc import Iterator
 from pathlib import Path
@@ -51,6 +52,7 @@ def parse_pdf(path: Path) -> Iterator[Block]:
 
     for pno, lines, tables in pages:
         para: list[str] = []
+        head: Block | None = None  # heading being accumulated (wrapped bold lines)
         for txt, size, bold in lines:
             if txt in running:
                 continue
@@ -58,13 +60,36 @@ def parse_pdf(path: Path) -> Iterator[Block]:
                 if para:
                     yield Block("paragraph", " ".join(para), page=pno)
                     para = []
-                yield Block("heading", txt, page=pno, font_size=size, bold=bold)
+                if head is not None and _continues_heading(head, txt, size, bold):
+                    head.text = f"{head.text} {txt}"
+                    continue
+                if head is not None:
+                    yield head
+                head = Block("heading", txt, page=pno, font_size=size, bold=bold)
             else:
+                if head is not None:
+                    yield head
+                    head = None
                 para.append(txt)
+        if head is not None:
+            yield head
         if para:
             yield Block("paragraph", " ".join(para), page=pno)
         for md in tables:
             yield Block("table", md, page=pno)
+
+
+_HEAD_START = re.compile(r"^(?:\([A-Z]{1,2}\)|\d{1,4}(?:\.\d+)*\s|TABLE\s|CHAPTER\s|SECTION\s|Exceptions?\s*:)", re.IGNORECASE)
+
+
+def _continues_heading(head: Block, txt: str, size: float, bold: bool) -> bool:
+    """A bold line continues the previous bold line when the first has no terminal punctuation
+    and the second does not itself look like the start of a heading."""
+    if head.font_size != size or head.bold != bold:
+        return False
+    if head.text.rstrip().endswith((".", ":", ";")):
+        return False
+    return not _HEAD_START.match(txt)
 
 
 def _mode(values: list[float]) -> float | None:

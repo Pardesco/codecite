@@ -19,7 +19,7 @@ def split_exceptions(paragraphs: list[str]) -> tuple[list[str], list[str]]:
             if cur:
                 exceptions.append("\n".join(cur))
             cur = [p.strip()]
-        elif cur is not None and _ITEM.match(p):
+        elif cur is not None and (_ITEM.match(p) or not cur[-1].rstrip().endswith((".", ";", ":"))):
             cur.append(p.strip())
         else:
             if cur:

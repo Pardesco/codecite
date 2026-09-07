@@ -165,7 +165,7 @@ def search(
     # abstain heuristic: no strict full-text match and the nearest vector is far away
     sim_floor = getattr(embedder, "abstain_similarity", s.abstain_similarity)
     if mode == "lexical":
-        abstain = strict_hits == 0
+        abstain = not lexical_ranks
     elif mode == "vector":
         abstain = top_similarity < sim_floor
     else:
