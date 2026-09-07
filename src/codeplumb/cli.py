@@ -180,7 +180,7 @@ def search(
     conn, emb = _embedder()
     res = _search(conn, emb, query, corpora=corpus or None, k=k, mode=mode)
     if as_json:
-        typer.echo(json.dumps(res, indent=2, default=str))
+        typer.echo(json.dumps(res, indent=2, default=str, ensure_ascii=False))
         return
     for i, h in enumerate(res["hits"], 1):
         kinds = ",".join(sorted({c["kind"] for c in h["matched_chunks"]})) or ("overlay" if h["scores"].get("overlay") else "")
@@ -196,7 +196,7 @@ def section(number: str, corpus: str | None = typer.Option(None, "--corpus"), ch
     from codeplumb.db.pool import connect
     from codeplumb.retrieve import get_section
 
-    typer.echo(json.dumps(get_section(connect(), number, corpus, include_children=children), indent=2, default=str))
+    typer.echo(json.dumps(get_section(connect(), number, corpus, include_children=children), indent=2, default=str, ensure_ascii=False))
 
 
 @app.command("eval")

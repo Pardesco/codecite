@@ -21,12 +21,12 @@ LINE_H = 20
 MAX_LINES = (H - 2 * PAD) // LINE_H
 BG, FG, DIM, ACCENT, PROMPT = (17, 19, 24), (222, 226, 230), (130, 138, 150), (255, 196, 96), (120, 220, 160)
 
-STEPS = [
-    ("codeplumb corpora", 900),
-    ('codeplumb search "how long can a dead-end corridor be in a sprinklered office?" --k 3', 2600),
-    ('codeplumb search "occupant load factor for business areas" --k 2', 2600),
-    ("codeplumb section 1017.2 --corpus sample-bc-2026", 2400),
-    ("claude mcp get codeplumb", 2200),
+STEPS = [  # (command, hold ms, max output lines)
+    ("codeplumb corpora", 900, 8),
+    ('codeplumb search "how long can a dead-end corridor be in a sprinklered office?" --corpus sample-bc-2026 --k 3', 2600, 40),
+    ('codeplumb search "occupant load factor for business areas" --corpus sample-bc-2026 --k 2', 2600, 40),
+    ('codeplumb search "temporary door locking devices in schools" --corpus ohio-bc --k 2', 2600, 40),
+    ("claude mcp get codeplumb", 2200, 9),
 ]
 
 
@@ -87,15 +87,17 @@ def main() -> None:
         durations.append(ms)
 
     add(render(shown, True), 600)
-    for cmd, hold in STEPS:
+    for cmd, hold, max_lines in STEPS:
         typed = ""
         for ch in cmd:
             typed += ch
             add(render(shown + [("$ " + typed, PROMPT)], True), 28 if ch != " " else 60)
         shown.append(("$ " + cmd, PROMPT))
         add(render(shown, False), 350)
-        out = run(cmd)
-        for raw in out.splitlines():
+        out_lines = run(cmd).splitlines()
+        if len(out_lines) > max_lines:
+            out_lines = out_lines[:max_lines] + ["   ..."]
+        for raw in out_lines:
             for piece in wrap(raw):
                 color = ACCENT if re.match(r"^\s*\d+\. §|^\s*\d+\. .*rrf=", piece) else (DIM if piece.startswith("   ") else FG)
                 shown.append((piece, color))
