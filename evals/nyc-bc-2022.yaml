@@ -1,0 +1,125 @@
+# NYC 2022 Building Code golden set (Chapter 10, Means of Egress). Questions + section numbers only.
+# The code itself is published free by the NYC Department of Buildings:
+#   https://www.nyc.gov/site/buildings/codes/2022-construction-codes.page
+# Download the chapter PDFs and ingest with `--profile ibc --layer base --corpus nyc-bc-2022`.
+
+- id: ny001
+  question: "How is the design occupant load determined?"
+  corpus: nyc-bc-2022
+  expected_sections: ["1004.1"]
+  tags: [egress, paraphrase]
+- id: ny002
+  question: "Can the occupant load be increased above the value from the table?"
+  corpus: nyc-bc-2022
+  expected_sections: ["1004.2"]
+  tags: [egress, paraphrase]
+- id: ny003
+  question: "occupant load of outdoor areas such as rooftops"
+  corpus: nyc-bc-2022
+  expected_sections: ["1004.4"]
+  tags: [egress, lookup]
+- id: ny004
+  question: "required egress capacity based on occupant load"
+  corpus: nyc-bc-2022
+  expected_sections: ["1005.3"]
+  tags: [egress, lookup]
+- id: ny005
+  question: "minimum width of a means of egress component"
+  corpus: nyc-bc-2022
+  expected_sections: ["1005.2"]
+  tags: [egress, lookup]
+- id: ny006
+  question: "stairway width and capacity"
+  corpus: nyc-bc-2022
+  expected_sections: ["1011.2"]
+  tags: [stairs, lookup]
+- id: ny007
+  question: "How big must a stairway landing be?"
+  corpus: nyc-bc-2022
+  expected_sections: ["1011.6"]
+  tags: [stairs, paraphrase]
+- id: ny008
+  question: "Where are spiral stairways permitted?"
+  corpus: nyc-bc-2022
+  expected_sections: ["1011.10"]
+  tags: [stairs, paraphrase]
+- id: ny009
+  question: "stairway to the roof and roof access"
+  corpus: nyc-bc-2022
+  expected_sections: ["1011.12"]
+  tags: [stairs, lookup]
+- id: ny010
+  question: "handrail graspability cross section"
+  corpus: nyc-bc-2022
+  expected_sections: ["1014.3"]
+  tags: [stairs, lookup]
+- id: ny011
+  question: "How far must a handrail extend beyond the top and bottom riser?"
+  corpus: nyc-bc-2022
+  expected_sections: ["1014.6"]
+  tags: [stairs, paraphrase]
+- id: ny012
+  question: "How long can a dead-end corridor be?"
+  corpus: nyc-bc-2022
+  expected_sections: ["1020.4"]
+  tags: [corridor, paraphrase]
+- id: ny013
+  question: "corridor width and capacity"
+  corpus: nyc-bc-2022
+  expected_sections: ["1020.2"]
+  tags: [corridor, lookup]
+- id: ny014
+  question: "corridor continuity through intervening rooms"
+  corpus: nyc-bc-2022
+  expected_sections: ["1020.6"]
+  tags: [corridor, lookup]
+- id: ny015
+  question: "What is a horizontal exit and when can it be used?"
+  corpus: nyc-bc-2022
+  expected_sections: ["1026.1", "1026"]
+  tags: [exits, paraphrase]
+- id: ny016
+  question: "floor-level exit signs in hotels"
+  corpus: nyc-bc-2022
+  expected_sections: ["1013.2"]
+  tags: [signs, paraphrase]
+- id: ny017
+  question: "raised character and braille exit signs"
+  corpus: nyc-bc-2022
+  expected_sections: ["1013.4"]
+  tags: [signs, lookup]
+- id: ny018
+  question: "exterior exit stairway and ramp protection"
+  corpus: nyc-bc-2022
+  expected_sections: ["1027.6"]
+  tags: [exits, lookup]
+- id: ny019
+  question: "aisle accessways in mercantile occupancies"
+  corpus: nyc-bc-2022
+  expected_sections: ["1018.4"]
+  tags: [aisles, lookup]
+- id: ny020
+  question: "travel distance in assembly occupancies"
+  corpus: nyc-bc-2022
+  expected_sections: ["1029.7"]
+  tags: [assembly, lookup]
+- id: ny021
+  question: "elevator lobby identification signs"
+  corpus: nyc-bc-2022
+  expected_sections: ["1023.10"]
+  tags: [signs, lookup]
+- id: ny022
+  question: "Section 1020.6"
+  corpus: nyc-bc-2022
+  expected_sections: ["1020.6"]
+  tags: [crossref]
+- id: ny023
+  question: "boiler room clearance around burners"
+  corpus: nyc-bc-2022
+  expected_sections: []
+  tags: [not-in-corpus]
+- id: ny024
+  question: "GFCI receptacle spacing in a residential kitchen"
+  corpus: nyc-bc-2022
+  expected_sections: []
+  tags: [not-in-corpus]

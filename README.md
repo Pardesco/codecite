@@ -113,6 +113,25 @@ Run locally on 2026-09-07 against the 35 OAC 4101:1 rules alone (amendment layer
 
 The misses are mostly one-line "modify exception #1" instructions with almost no text of their own, which a base-layer IBC index would give context to. Report in [docs/EVALS-ohio.md](docs/EVALS-ohio.md).
 
+## Full-pipeline test on a real code: New York City
+
+The IBC itself is sold by ICC, but New York City publishes its own IBC-derived Building Code as free chapter PDFs (2014 edition based on IBC 2009; 2022 edition based on IBC 2015), and city law is a government edict. That makes it the cleanest way to exercise the whole pipeline on genuine ICC-layout PDFs. The chapter files are linked from the [2022 Construction Codes page](https://www.nyc.gov/site/buildings/codes/2022-construction-codes.page) and served from `/assets/buildings/codes-pdf/cons_codes_2022/`.
+
+```bash
+uv run codeplumb ingest corpus/nyc2022 --corpus nyc-bc-2022 --layer base --profile ibc --version 2022 --corpus-title "New York City Building Code 2022"
+uv run codeplumb eval evals/nyc-bc-2022.yaml --modes hybrid,vector,lexical
+```
+
+Indexed 2026-09-07: 33 chapters, about 5,700 sections and 6,600 chunks (400+ tables, 500+ exceptions). Egress golden set (24 questions), `nomic-embed-text-v1.5` on CPU:
+
+| mode | hit@1 | hit@3 | hit@5 | MRR |
+|---|---|---|---|---|
+| hybrid | 0.705 | 0.977 | 0.977 | 0.803 |
+| vector only | 0.818 | 0.886 | 0.886 | 0.841 |
+| lexical only | 0.614 | 0.750 | 0.750 | 0.676 |
+
+Known parser limits on these PDFs: NYC prints chapter and section titles as running page headers, which the parser strips, so those two levels of the breadcrumb lose their titles (subsections keep theirs). Report in [docs/EVALS-nyc.md](docs/EVALS-nyc.md).
+
 ## Legal posture
 
 Operators index documents they already have the right to use. Nothing indexed leaves the machine unless a remote embedding provider is explicitly enabled. See [docs/LEGAL.md](docs/LEGAL.md) for the cases and the reasoning, [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the design, and [docs/WRITEUP.md](docs/WRITEUP.md) for the short version.

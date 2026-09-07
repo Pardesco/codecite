@@ -47,6 +47,9 @@ def chunk_section(sec: Section, profile: Profile) -> tuple[list[Chunk], str, lis
 
     body_paras, exceptions = split_exceptions(sec.paragraphs)
     is_defs = bool(profile.definitions_title.search(sec.title or ""))
+    if not is_defs and len(body_paras) >= 20:
+        # title may be lost (PDF running headers); a body that is mostly TERM. lines is a definitions section
+        is_defs = len(split_definitions("\n\n".join(body_paras))) >= 10
 
     def add(kind: str, content: str) -> None:
         ordinal = sum(1 for c in chunks if c.kind == kind)

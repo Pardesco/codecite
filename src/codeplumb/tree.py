@@ -133,7 +133,7 @@ def build_tree(blocks: Iterable[Block], profile: Profile, corpus_title: str = ""
                 # a caption followed by prose, not a table: keep the caption text as body
                 sec.paragraphs.append(f"Table {pending_caption.number} {pending_caption.title}".strip())
                 pending_caption = None
-            if block.kind == "heading" and not sec.title and not sec.paragraphs:
+            if block.kind == "heading" and not sec.title and not sec.paragraphs and _title_like(block.text):
                 # "CHAPTER 10" on one line, "MEANS OF EGRESS" on the next (different font size)
                 sec.title = block.text.strip().title() if block.text.strip().isupper() else block.text.strip()
                 continue
@@ -151,6 +151,12 @@ def build_tree(blocks: Iterable[Block], profile: Profile, corpus_title: str = ""
             parts.insert(0, corpus_title)
         sec.path = " > ".join(parts)
     return sections
+
+
+def _title_like(text: str) -> bool:
+    """Short, no sentence break inside: a title, not a definition or a body line."""
+    t = text.strip().rstrip(".")
+    return 0 < len(t) <= 80 and "." not in t and not t.endswith(":")
 
 
 def _monotonic_ok(seen: dict, parent: int | None, h: Heading) -> bool:
