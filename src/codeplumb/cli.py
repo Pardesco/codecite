@@ -186,7 +186,9 @@ def search(
         kinds = ",".join(sorted({c["kind"] for c in h["matched_chunks"]})) or ("overlay" if h["scores"].get("overlay") else "")
         typer.echo(f"{i}. §{h['section']['number']} {h['section']['title']}  [{kinds}] rrf={h['scores']['rrf']}")
         typer.echo(f"   {h['citation']}")
-        typer.echo(f"   {h['content'][:200].replace(chr(10), ' ')}")
+        top = h["matched_chunks"][0] if h["matched_chunks"] else None
+        shown = top["excerpt"] if top and top["kind"] != "body" else h["content"]
+        typer.echo(f"   {shown[:200].replace(chr(10), ' ')}")
     if res["abstain"]:
         typer.echo("(low confidence: the corpus may not cover this)")
 
