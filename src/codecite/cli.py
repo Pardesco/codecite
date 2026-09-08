@@ -206,7 +206,7 @@ def eval_cmd(
     golden: Path,
     modes: str = typer.Option("hybrid", "--modes"),
     report: Path | None = typer.Option(None, "--report"),
-    fail_under: str | None = typer.Option(None, "--fail-under", help="e.g. hit@5=0.90 (checked on the first mode)"),
+    fail_under: str | None = typer.Option(None, "--fail-under", help="e.g. hit@5=0.90 (checked on hybrid, else the first mode)"),
 ):
     from codecite.evaluate import load_golden, render_report, run_eval
 
@@ -220,10 +220,12 @@ def eval_cmd(
     if fail_under:
         metric, thr = fail_under.split("=")
         metric = metric.replace("section-", "")
-        val = results[mode_list[0]]["summary"].get(metric) or 0.0
+        gate_mode = "hybrid" if "hybrid" in mode_list else mode_list[0]
+        val = results[gate_mode]["summary"].get(metric) or 0.0
         if val < float(thr):
-            typer.echo(f"FAIL: {metric}={val} < {thr}", err=True)
+            typer.echo(f"FAIL: {gate_mode} {metric}={val} < {thr}", err=True)
             raise typer.Exit(1)
+        typer.echo(f"gate ok: {gate_mode} {metric}={val} >= {thr}")
 
 
 @app.command()
