@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "codecite": {
+      "type": "stdio",
+      "command": "uv",
+      "args": [
+        "run",
+        "codecite",
+        "serve"
+      ],
+      "env": {}
+    }
+  }
+}

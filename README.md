@@ -25,10 +25,10 @@ uv run codecite ingest samples/sample-building-code/local-amendments-2026.md --c
 uv run codecite search "occupant load factor for business areas"
 ```
 
-Then wire it into a client:
+Then wire it into a client. The repo ships a `.mcp.json`, so Claude Code picks the server up automatically when run inside the folder (project scope, nothing global, nothing loaded in other sessions). For a global registration instead:
 
 ```bash
-claude mcp add codecite -- uv run --directory /path/to/codecite codecite serve
+claude mcp add codecite --scope user -- uv run --directory /path/to/codecite codecite serve
 ```
 
 ```toml
