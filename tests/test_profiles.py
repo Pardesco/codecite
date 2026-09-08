@@ -1,8 +1,8 @@
 import pytest
 
-from codeplumb.parse.base import Block
-from codeplumb.profiles import get_profile, normalize_number
-from codeplumb.profiles.base import strip_ref_prefix
+from codecite.parse.base import Block
+from codecite.profiles import get_profile, normalize_number
+from codecite.profiles.base import strip_ref_prefix
 
 ibc = get_profile("ibc")
 

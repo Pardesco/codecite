@@ -4,7 +4,7 @@
 
 ### 101.1 Title
 
-These provisions are the Model Building Code, 2026 Edition, referred to in this document as "this code". This code is a fictional teaching corpus written for the codeplumb project and has no legal standing anywhere.
+These provisions are the Model Building Code, 2026 Edition, referred to in this document as "this code". This code is a fictional teaching corpus written for the codecite project and has no legal standing anywhere.
 
 ### 101.2 Scope
 

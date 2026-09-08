@@ -1,19 +1,20 @@
+name: codecite
 services:
   db:
     image: pgvector/pgvector:pg17
-    container_name: codeplumb-db
+    container_name: codecite-db
     environment:
-      POSTGRES_USER: codeplumb
-      POSTGRES_PASSWORD: codeplumb
-      POSTGRES_DB: codeplumb
+      POSTGRES_USER: codecite
+      POSTGRES_PASSWORD: codecite
+      POSTGRES_DB: codecite
     ports:
       - "127.0.0.1:5432:5432"
     volumes:
-      - codeplumb-pgdata:/var/lib/postgresql/data
+      - codecite-pgdata:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U codeplumb"]
+      test: ["CMD-SHELL", "pg_isready -U codecite"]
       interval: 5s
       timeout: 3s
       retries: 20
 volumes:
-  codeplumb-pgdata:
+  codecite-pgdata:

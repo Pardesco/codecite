@@ -9,11 +9,11 @@ import pytest
 ROOT = Path(__file__).resolve().parent.parent
 SAMPLES = ROOT / "samples" / "sample-building-code"
 TEST_URL = os.environ.get(
-    "CODEPLUMB_TEST_DATABASE_URL", "postgresql://codeplumb:codeplumb@127.0.0.1:5432/codeplumb_test"
+    "CODECITE_TEST_DATABASE_URL", "postgresql://codecite:codecite@127.0.0.1:5432/codecite_test"
 )
 
-os.environ["CODEPLUMB_DATABASE_URL"] = TEST_URL
-os.environ["CODEPLUMB_EMBED_PROVIDER"] = "fake"
+os.environ["CODECITE_DATABASE_URL"] = TEST_URL
+os.environ["CODECITE_EMBED_PROVIDER"] = "fake"
 
 
 def _ensure_test_db() -> bool:
@@ -33,10 +33,10 @@ def _ensure_test_db() -> bool:
 def db():
     """Fresh schema + the synthetic corpus (base + amendments), embedded with the fake embedder."""
     if not _ensure_test_db():
-        pytest.skip("Postgres not reachable at CODEPLUMB_TEST_DATABASE_URL (docker compose up -d)")
-    from codeplumb.db.pool import apply_migrations, connect, drop_all
-    from codeplumb.embed import FakeEmbedder
-    from codeplumb.ingest import ingest_document
+        pytest.skip("Postgres not reachable at CODECITE_TEST_DATABASE_URL (docker compose up -d)")
+    from codecite.db.pool import apply_migrations, connect, drop_all
+    from codecite.embed import FakeEmbedder
+    from codecite.ingest import ingest_document
 
     conn = connect(TEST_URL)
     drop_all(conn)

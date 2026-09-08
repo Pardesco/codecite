@@ -23,22 +23,22 @@ MAX_LINES = (H - 2 * PAD) // LINE_H
 BG, FG, DIM, ACCENT, PROMPT = (17, 19, 24), (222, 226, 230), (130, 138, 150), (255, 196, 96), (120, 220, 160)
 
 STEPS = [  # (command, hold ms, max output lines)
-    ("codeplumb corpora", 900, 8),
-    ('codeplumb search "how long can a dead-end corridor be in a sprinklered office?" --corpus sample-bc-2026 --k 3', 2600, 40),
-    ('codeplumb search "occupant load factor for business areas" --corpus sample-bc-2026 --k 2', 2600, 40),
-    ('codeplumb search "temporary door locking devices in schools" --corpus ohio-bc --k 2', 2600, 40),
-    ("claude mcp get codeplumb", 2200, 9),
+    ("codecite corpora", 900, 8),
+    ('codecite search "how long can a dead-end corridor be in a sprinklered office?" --corpus sample-bc-2026 --k 3', 2600, 40),
+    ('codecite search "occupant load factor for business areas" --corpus sample-bc-2026 --k 2', 2600, 40),
+    ('codecite search "temporary door locking devices in schools" --corpus ohio-bc --k 2', 2600, 40),
+    ("claude mcp get codecite", 2200, 9),
 ]
 
 
 def run(cmd: str) -> str:
     argv = cmd.split(" ", 1)
-    if argv[0] == "codeplumb":
-        full = [sys.executable, "-m", "codeplumb.cli"] + _split(argv[1] if len(argv) > 1 else "")
+    if argv[0] == "codecite":
+        full = [sys.executable, "-m", "codecite.cli"] + _split(argv[1] if len(argv) > 1 else "")
     else:
         full = _split(cmd)
     env = {**os.environ, "PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8"}
-    p = subprocess.run(full, capture_output=True, text=True, cwd=ROOT, shell=(argv[0] != "codeplumb"), encoding="utf-8", errors="replace", env=env)
+    p = subprocess.run(full, capture_output=True, text=True, cwd=ROOT, shell=(argv[0] != "codecite"), encoding="utf-8", errors="replace", env=env)
     out = (p.stdout or "") + (p.stderr if p.returncode else "")
     return re.sub(r"\x1b\[[0-9;]*[A-Za-z]", "", out).rstrip()
 
@@ -69,7 +69,7 @@ def render(lines: list[tuple[str, tuple[int, int, int]]], cursor: bool) -> Image
     d.rectangle([0, 0, W, 34], fill=(28, 31, 38))
     for i, c in enumerate(((255, 95, 86), (255, 189, 46), (39, 201, 63))):
         d.ellipse([14 + i * 22, 11, 26 + i * 22, 23], fill=c)
-    d.text((W // 2 - 60, 9), "codeplumb demo", fill=DIM, font=f)
+    d.text((W // 2 - 60, 9), "codecite demo", fill=DIM, font=f)
     y = 44
     for text, color in lines[-(MAX_LINES - 2) :]:
         d.text((PAD, y), text, fill=color, font=f)
@@ -82,7 +82,7 @@ def render(lines: list[tuple[str, tuple[int, int, int]]], cursor: bool) -> Image
 def main() -> None:
     frames: list[Image.Image] = []
     durations: list[int] = []
-    shown: list[tuple[str, tuple[int, int, int]]] = [("$ docker compose up -d && uv run codeplumb init   # done earlier", DIM), ("", FG)]
+    shown: list[tuple[str, tuple[int, int, int]]] = [("$ docker compose up -d && uv run codecite init   # done earlier", DIM), ("", FG)]
 
     def add(img: Image.Image, ms: int) -> None:
         frames.append(img.quantize(colors=64, method=Image.Quantize.MEDIANCUT))

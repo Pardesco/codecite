@@ -1,6 +1,6 @@
-from codeplumb.extract.crossrefs import find_cross_refs
-from codeplumb.extract.definitions import split_definitions
-from codeplumb.extract.exceptions import split_exceptions
+from codecite.extract.crossrefs import find_cross_refs
+from codecite.extract.definitions import split_definitions
+from codecite.extract.exceptions import split_exceptions
 
 
 def test_split_exceptions_single_and_numbered():

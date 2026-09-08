@@ -1,10 +1,10 @@
 from pathlib import Path
 
-from codeplumb.ingest import parse_to_tree
-from codeplumb.parse.base import Block
-from codeplumb.parse.markdown import parse_markdown_text
-from codeplumb.profiles import get_profile
-from codeplumb.tree import build_tree
+from codecite.ingest import parse_to_tree
+from codecite.parse.base import Block
+from codecite.parse.markdown import parse_markdown_text
+from codecite.profiles import get_profile
+from codecite.tree import build_tree
 
 SAMPLE = Path(__file__).resolve().parent.parent / "samples" / "sample-building-code" / "model-building-code-2026.md"
 
@@ -84,7 +84,7 @@ def test_duplicate_numbers_get_alias():
 
 
 def test_pdf_wrapped_heading_merge_rule():
-    from codeplumb.parse.pdf import _continues_heading
+    from codecite.parse.pdf import _continues_heading
 
     head = Block("heading", "(A)Modify Section 1001.1to add the following sentence at the end of the", font_size=12.0, bold=True)
     assert _continues_heading(head, "paragraph:", 12.0, True)

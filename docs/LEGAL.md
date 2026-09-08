@@ -4,7 +4,7 @@
 
 ## Why this section exists
 
-Building codes are an odd corner of copyright. Model codes such as the International Building Code (IBC) are written by a private organisation, the International Code Council (ICC), and then adopted into law by states and cities. Whether the adopted text is still ICC's property or has become "the law" that anyone may copy is contested, and the answer currently depends on which federal circuit you are in. codeplumb is built so that it is clean under every plausible outcome.
+Building codes are an odd corner of copyright. Model codes such as the International Building Code (IBC) are written by a private organisation, the International Code Council (ICC), and then adopted into law by states and cities. Whether the adopted text is still ICC's property or has become "the law" that anyone may copy is contested, and the answer currently depends on which federal circuit you are in. codecite is built so that it is clean under every plausible outcome.
 
 ## What the courts have said
 
@@ -19,11 +19,11 @@ Two fair positions to state without picking a side: ICC argues that code develop
 
 Ohio's building code is Ohio Administrative Code Chapter 4101:1. Rule 4101:1-1-01 incorporates the 2021 IBC, Chapters 2 through 35 and Appendix H, by reference; 4101:1-34-01 incorporates the 2021 IEBC. Ohio's *amendments* are published as OAC rule text on `codes.ohio.gov`, which is a government edict and free. The *unamended IBC body text* is not on the state site; ICC publishes it. ICC's free premiumACCESS tier is view-only under its terms of use, and automating around those terms is a contract breach regardless of the copyright answer.
 
-## The posture codeplumb takes
+## The posture codecite takes
 
 1. **The repository is code, not content.** Pipeline, schema, MCP server, tests, eval harness, and an original synthetic "Model Building Code, 2026 Edition" written for this project. The synthetic corpus uses IBC-style numbering because that is what the parser must handle, but its sentences and values are invented. It was reviewed by hand for phrasing that tracked real IBC sentences and rewritten where it did.
 2. **The operator supplies the corpus.** Users index files they lawfully possess: a purchased PDF, a licensed export, a firm's own standards. The tool does no network fetching of code text by default.
-3. **The only fetch helper targets state law.** `codeplumb fetch-oac` downloads OAC rule PDFs from `codes.ohio.gov`, respects `robots.txt`, rate-limits to one request per second, identifies itself, and never touches any ICC domain.
+3. **The only fetch helper targets state law.** `codecite fetch-oac` downloads OAC rule PDFs from `codes.ohio.gov`, respects `robots.txt`, rate-limits to one request per second, identifies itself, and never touches any ICC domain.
 4. **Nothing leaves the machine** unless the operator deliberately selects a remote embedding provider, and then only chunk text goes to that provider under the operator's own account.
 5. **No redistribution.** The database stores the operator's text locally. Source files are referenced by path and hash, never copied into the repository.
 6. **The server does not generate answers.** It retrieves and cites. Whether an AI's reading of a code is correct is a question for the client model and the human, not for this server.

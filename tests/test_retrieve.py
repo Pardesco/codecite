@@ -1,7 +1,7 @@
 import pytest
 
-from codeplumb.db import queries as q
-from codeplumb.retrieve import get_context, get_section, resolve_reference, search
+from codecite.db import queries as q
+from codecite.retrieve import get_context, get_section, resolve_reference, search
 
 
 def _numbers(res):
@@ -119,7 +119,7 @@ def test_multi_corpus_search(db):
 
 def test_reingest_is_noop_without_force(db):
     conn, emb = db
-    from codeplumb.ingest import AlreadyIngested, ingest_document
+    from codecite.ingest import AlreadyIngested, ingest_document
     from tests.conftest import SAMPLES
 
     with pytest.raises(AlreadyIngested):

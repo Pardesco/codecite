@@ -1,13 +1,13 @@
-# codeplumb — Technical Specification, v1
+# codecite — Technical Specification, v1
 
 **Status:** Draft for review · **Date:** 2026-09-03 · **Owner:** Randall (Pardesco)
-**Working name:** `codeplumb` (a plumb line for building codes). Placeholder — rename freely before the repo goes public.
+**Name:** `codecite` (chosen 2026-09-07; the working name during the spec was `codeplumb`, a plumb line for building codes).
 
 ---
 
 ## 0. One-paragraph summary
 
-`codeplumb` is an open-source, bring-your-own-corpus retrieval system for building codes and internal standards. It ingests documents the operator already has the right to use (a purchased PDF of the 2021 IBC, a premiumACCESS export they are licensed for, the free Ohio Administrative Code rule PDFs, a firm's own design standards), parses them into a section tree, chunks by section, indexes into Postgres + pgvector with hybrid (vector + full-text) search, and exposes the whole thing to Claude Code and Codex through an MCP server whose every answer carries a section-level citation. **The repository ships code, schema, tests, an eval harness, and a synthetic demo corpus. It never ships, fetches, scrapes, or redistributes ICC text.**
+`codecite` is an open-source, bring-your-own-corpus retrieval system for building codes and internal standards. It ingests documents the operator already has the right to use (a purchased PDF of the 2021 IBC, a premiumACCESS export they are licensed for, the free Ohio Administrative Code rule PDFs, a firm's own design standards), parses them into a section tree, chunks by section, indexes into Postgres + pgvector with hybrid (vector + full-text) search, and exposes the whole thing to Claude Code and Codex through an MCP server whose every answer carries a section-level citation. **The repository ships code, schema, tests, an eval harness, and a synthetic demo corpus. It never ships, fetches, scrapes, or redistributes ICC text.**
 
 ---
 
@@ -35,7 +35,7 @@
 
 | Criterion | Target |
 |---|---|
-| `docker compose up` + `codeplumb ingest samples/` + `codeplumb serve` works on a fresh clone | < 10 minutes, no API key |
+| `docker compose up` + `codecite ingest samples/` + `codecite serve` works on a fresh clone | < 10 minutes, no API key |
 | Hybrid section-hit recall@5 on the shipped synthetic golden set | ≥ 0.90 |
 | Hybrid section-hit recall@5 on a private Ohio set (run locally, numbers only in README) | ≥ 0.80 |
 | Claude Code and Codex both list the tools and answer a cited question | verified with screenshots |
@@ -104,7 +104,7 @@ flowchart LR
     K --> G
 ```
 
-Two processes: a **CLI** for ingestion and evaluation (batch, writes to the DB) and an **MCP server** for retrieval (long-running, read-only by default). Both import the same `codeplumb` package.
+Two processes: a **CLI** for ingestion and evaluation (batch, writes to the DB) and an **MCP server** for retrieval (long-running, read-only by default). Both import the same `codecite` package.
 
 ---
 
@@ -244,7 +244,7 @@ CREATE TABLE ingest_runs (
 ```
 
 Notes:
-- One embedding model per database. `embedding_config` is written at `codeplumb init` and the migration templates the `vector(N)` dimension from it. Mixing models in one column is a silent-quality bug; refusing is the right v1 behaviour.
+- One embedding model per database. `embedding_config` is written at `codecite init` and the migration templates the `vector(N)` dimension from it. Mixing models in one column is a silent-quality bug; refusing is the right v1 behaviour.
 - `path` is a display breadcrumb. Tree walks use `parent_id`; no ltree extension needed at this scale (a full IBC is roughly 5–6k sections).
 - Source files are referenced by path and hash, never copied into the DB or repo.
 
@@ -252,7 +252,7 @@ Notes:
 
 ## 7. Ingestion pipeline
 
-`codeplumb ingest <path-or-dir> --corpus <id> --layer base|amendment [--profile ibc|oac|generic] [--title ...] [--version ...]`
+`codecite ingest <path-or-dir> --corpus <id> --layer base|amendment [--profile ibc|oac|generic] [--title ...] [--version ...]`
 
 ### 7.1 Stages
 
@@ -290,7 +290,7 @@ Notes:
 ### 7.3 Idempotency and versioning
 
 - Re-ingesting the same file (same hash) is a no-op. `--force` deletes and re-creates that document's sections and chunks in one transaction.
-- A new version of a document (different hash) is a new `documents` row; the operator removes the old one with `codeplumb rm-document <id>` or keeps both and filters by version. No automatic "latest" logic in v1.
+- A new version of a document (different hash) is a new `documents` row; the operator removes the old one with `codecite rm-document <id>` or keeps both and filters by version. No automatic "latest" logic in v1.
 
 ### 7.4 Embedding provider interface
 
@@ -304,7 +304,7 @@ class Embedder(Protocol):
     def embed_query(self, text: str) -> list[float]: ...
 ```
 
-Providers: `LocalSentenceTransformers` (default, device auto: CUDA if available), `VoyageEmbedder`, `OpenAIEmbedder`. Remote providers refuse to construct unless `CODEPLUMB_ALLOW_REMOTE_EMBEDDINGS=1` is set, and log once at startup that chunk text will be sent to the provider. Vectors are L2-normalised before storage so cosine and inner product agree.
+Providers: `LocalSentenceTransformers` (default, device auto: CUDA if available), `VoyageEmbedder`, `OpenAIEmbedder`. Remote providers refuse to construct unless `CODECITE_ALLOW_REMOTE_EMBEDDINGS=1` is set, and log once at startup that chunk text will be sent to the provider. Vectors are L2-normalised before storage so cosine and inner product agree.
 
 ---
 
@@ -354,7 +354,7 @@ Providers: `LocalSentenceTransformers` (default, device auto: CUDA if available)
 
 ## 9. MCP server
 
-`codeplumb serve [--transport stdio|http] [--host 127.0.0.1 --port 8765] [--corpora a,b]`
+`codecite serve [--transport stdio|http] [--host 127.0.0.1 --port 8765] [--corpora a,b]`
 
 Built on the official `mcp` Python SDK. Stdio is the default (what Claude Code and Codex spawn). Streamable HTTP is provided for a shared instance on a LAN; it binds to localhost unless overridden and has no auth in v1, which the README states plainly.
 
@@ -368,15 +368,15 @@ Built on the official `mcp` Python SDK. Stdio is the default (what Claude Code a
 | `resolve_reference` | `text: str` | List of `{ref_text, number, kind, corpus, found: bool}` | Parses free text for references and says which exist |
 | `list_corpora` | — | Corpora with document titles, layers, versions, section/chunk counts, embedding model | Lets the client tell the user what is actually indexed |
 | `list_chapters` | `corpus: str` | Chapter numbers + titles | Table of contents |
-| `ingest_document` *(disabled unless `CODEPLUMB_ENABLE_INGEST_TOOL=1`)* | `path: str`, `corpus: str`, `layer: str`, `profile?: str` | `ingest_runs` row | Path must be under `CODEPLUMB_INGEST_ROOT`. Off by default because it writes and because it is slow |
+| `ingest_document` *(disabled unless `CODECITE_ENABLE_INGEST_TOOL=1`)* | `path: str`, `corpus: str`, `layer: str`, `profile?: str` | `ingest_runs` row | Path must be under `CODECITE_INGEST_ROOT`. Off by default because it writes and because it is slow |
 
 Tool descriptions are written for the model, not for humans: each says when to use it, what it returns, and that the result text is quoted from the operator's indexed document and must be cited by section number.
 
 ### 9.2 Resources
 
-- `codeplumb://{corpus}/toc` — chapters and sections as an outline (text/markdown).
-- `codeplumb://{corpus}/section/{number}` — the section rendered as Markdown with breadcrumb, body, exceptions, tables.
-- `codeplumb://{corpus}/document/{id}` — document metadata.
+- `codecite://{corpus}/toc` — chapters and sections as an outline (text/markdown).
+- `codecite://{corpus}/section/{number}` — the section rendered as Markdown with breadcrumb, body, exceptions, tables.
+- `codecite://{corpus}/document/{id}` — document metadata.
 
 Resource templates let a client pull a section into context by URI after a search.
 
@@ -394,16 +394,16 @@ Tool errors are returned as MCP tool results with `isError: true` and a short, a
 Claude Code:
 
 ```bash
-claude mcp add codeplumb -- uv run --directory C:/Users/Randall/Documents/codeplumb codeplumb serve
+claude mcp add codecite -- uv run --directory C:/Users/Randall/Documents/codecite codecite serve
 ```
 
 Codex (`~/.codex/config.toml`; Codex uses TOML, not JSON, and `codex mcp add` is the CLI equivalent):
 
 ```toml
-[mcp_servers.codeplumb]
+[mcp_servers.codecite]
 command = "uv"
-args = ["run", "--directory", "C:/Users/Randall/Documents/codeplumb", "codeplumb", "serve"]
-env = { CODEPLUMB_DATABASE_URL = "postgresql://codeplumb:codeplumb@127.0.0.1:5432/codeplumb" }
+args = ["run", "--directory", "C:/Users/Randall/Documents/codecite", "codecite", "serve"]
+env = { CODECITE_DATABASE_URL = "postgresql://codecite:codecite@127.0.0.1:5432/codecite" }
 ```
 
 Both snippets go in the README with a screenshot of `/mcp` (Claude Code) and `codex mcp list` showing the tools.
@@ -417,17 +417,17 @@ Indexed text is data, never instructions. The server does no LLM calls, so there
 ## 10. CLI
 
 ```
-codeplumb init                      # create DB schema, write embedding_config, download local model
-codeplumb ingest PATH --corpus ID --layer base|amendment [--profile] [--title] [--version] [--force]
-codeplumb ingest PATH --dry-run --show-tree   # print the parsed section tree, write nothing
-codeplumb rm-document ID
-codeplumb corpora                   # list
-codeplumb search "query" [--corpus] [--k] [--json]
-codeplumb section 1004.5 [--corpus]
-codeplumb eval GOLDEN.yaml [--modes naive,vector,lexical,hybrid,hybrid+rerank] [--report out.md]
-codeplumb serve [--transport] [--port]
-codeplumb fetch-oac 4101:1 --out ./corpus/oac   # downloads OAC rule PDFs from codes.ohio.gov (state law); see §13
-codeplumb doctor                    # DB reachable, extension version, model cached, GPU visible
+codecite init                      # create DB schema, write embedding_config, download local model
+codecite ingest PATH --corpus ID --layer base|amendment [--profile] [--title] [--version] [--force]
+codecite ingest PATH --dry-run --show-tree   # print the parsed section tree, write nothing
+codecite rm-document ID
+codecite corpora                   # list
+codecite search "query" [--corpus] [--k] [--json]
+codecite section 1004.5 [--corpus]
+codecite eval GOLDEN.yaml [--modes naive,vector,lexical,hybrid,hybrid+rerank] [--report out.md]
+codecite serve [--transport] [--port]
+codecite fetch-oac 4101:1 --out ./corpus/oac   # downloads OAC rule PDFs from codes.ohio.gov (state law); see §13
+codecite doctor                    # DB reachable, extension version, model cached, GPU visible
 ```
 
 ---
@@ -469,7 +469,7 @@ Shipped: `evals/sample-bc.yaml` (at least 60 questions across lookup, paraphrase
 
 ### 12.3 CI gate
 
-`codeplumb eval evals/sample-bc.yaml --modes hybrid --fail-under section-hit@5=0.90` runs in GitHub Actions against a Postgres service container with the local embedder on CPU. The Markdown report is uploaded as an artifact and the headline table is pasted into the README on each release.
+`codecite eval evals/sample-bc.yaml --modes hybrid --fail-under section-hit@5=0.90` runs in GitHub Actions against a Postgres service container with the local embedder on CPU. The Markdown report is uploaded as an artifact and the headline table is pasted into the README on each release.
 
 ---
 
@@ -477,9 +477,9 @@ Shipped: `evals/sample-bc.yaml` (at least 60 questions across lookup, paraphrase
 
 What the operator can assemble for a real Ohio Building Code corpus:
 
-| Piece | Source | Rights | How it enters codeplumb |
+| Piece | Source | Rights | How it enters codecite |
 |---|---|---|---|
-| Ohio amendments (OAC 4101:1 rule text) | `codes.ohio.gov` rule PDFs, e.g. `4101$1-3-01_eff_10_15_25.pdf` | State law; free | `codeplumb fetch-oac 4101:1` then `ingest --layer amendment --profile oac` |
+| Ohio amendments (OAC 4101:1 rule text) | `codes.ohio.gov` rule PDFs, e.g. `4101$1-3-01_eff_10_15_25.pdf` | State law; free | `codecite fetch-oac 4101:1` then `ingest --layer amendment --profile oac` |
 | 2021 IBC body (Ch 2–35, App H), incorporated by reference | Operator's purchased PDF or licensed export | Operator's licence | `ingest --layer base --profile ibc` |
 | 2021 IEBC (for 4101:1-34-01) | same | same | same |
 | Ohio Residential Code (OAC 4101:8 + IRC 2021) | same pattern | same | second corpus `ohio-rc-2024` |
@@ -506,10 +506,10 @@ Amendment overlay in v1 is **tagging plus adjacency**: an amendment section with
 ## 15. Repository layout
 
 ```
-codeplumb/
+codecite/
   README.md                    # pitch, 3-command quickstart, architecture diagram, eval table, legal note
   LICENSE                      # MIT
-  pyproject.toml               # uv-managed; console script `codeplumb`
+  pyproject.toml               # uv-managed; console script `codecite`
   docker-compose.yml           # postgres:17 + pgvector
   .env.example
   docs/
@@ -517,7 +517,7 @@ codeplumb/
     ARCHITECTURE.md            # narrative + diagram
     LEGAL.md                   # §2 expanded, with sources
     EVALS.md                   # latest report
-  src/codeplumb/
+  src/codecite/
     config.py
     db/ (migrations/*.sql, pool.py, queries.py)
     parse/ (base.py, pdf.py, html.py, docx.py, markdown.py)
@@ -552,9 +552,9 @@ codeplumb/
 
 | M | Deliverable | Definition of done |
 |---|---|---|
-| M0 | Scaffold | `uv sync`, `docker compose up`, `codeplumb init`, `codeplumb doctor` green; CI runs ruff + empty pytest |
+| M0 | Scaffold | `uv sync`, `docker compose up`, `codecite init`, `codecite doctor` green; CI runs ruff + empty pytest |
 | M1 | Parse + tree + chunk | Synthetic corpus PDF and Markdown both produce identical section trees; unit tests for all three profiles; `ingest` writes sections/chunks with dummy zero vectors |
-| M2 | Embed + retrieve | Local embedder wired; hybrid search; `codeplumb search` returns cited hits; eval harness runs `naive`/`vector`/`lexical`/`hybrid` on the synthetic set; numbers committed to `docs/EVALS.md` |
+| M2 | Embed + retrieve | Local embedder wired; hybrid search; `codecite search` returns cited hits; eval harness runs `naive`/`vector`/`lexical`/`hybrid` on the synthetic set; numbers committed to `docs/EVALS.md` |
 | M3 | MCP server | All tools/resources/prompts; stdio verified in Claude Code and Codex; `test_mcp.py` passes; screenshots in README |
 | M4 | Ohio profile + overlay | `fetch-oac`, `oac` profile, amendment tagging; private eval on real Ohio corpus run locally, headline numbers in README |
 | M5 | Portfolio polish | Architecture doc, LEGAL.md with sources, 90-second demo GIF, release v1.0.0 tag, short write-up post |
@@ -576,7 +576,7 @@ Rough effort at Randall's cadence: M0–M3 is one focused week; M4–M5 a second
 
 **Decisions for Randall**
 
-1. Project name (working: `codeplumb`).
+1. Project name (working: `codecite`).
 2. Confirm Python over TypeScript.
 3. Default local model: `nomic-embed-text-v1.5` (768-d, prefixes) vs `bge-m3` (1024-d, multilingual). Recommendation: nomic; smaller index, and the prefix convention is a good talking point.
 4. Ship the Ohio golden set (questions + section numbers) or keep it private. Recommendation: ship it; numbers are facts, and it shows the tool was tested against a real code.

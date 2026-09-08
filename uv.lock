@@ -290,7 +290,7 @@ wheels = [
 ]
 
 [[package]]
-name = "codeplumb"
+name = "codecite"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [

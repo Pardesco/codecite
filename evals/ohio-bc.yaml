@@ -1,5 +1,5 @@
 # Ohio Building Code golden set: questions + expected section/rule numbers ONLY. No code text.
-# Run against your own index: `codeplumb fetch-oac 4101:1` (state amendments, free) plus your
+# Run against your own index: `codecite fetch-oac 4101:1` (state amendments, free) plus your
 # licensed IBC 2021 PDF on the base layer. Numbers below are OAC 4101:1 rule numbers or the IBC
 # section numbers those rules amend; "(2)" suffixes mark a second section carrying the same number.
 

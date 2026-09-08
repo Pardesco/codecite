@@ -1,4 +1,4 @@
-# codeplumb
+# codecite
 
 Bring-your-own-corpus retrieval for building codes: section-faithful chunking, hybrid search in Postgres, and an MCP server so Claude Code or Codex can answer with `§1004.5`-style citations from **your** licensed copy of a code. The repo ships code, schema, tests, an eval harness, and an original synthetic code. It never ships, fetches, or redistributes ICC text.
 
@@ -18,25 +18,25 @@ flowchart LR
 
 ```bash
 docker compose up -d
-uv sync --extra local                 # local nomic-embed-text-v1.5; or set CODEPLUMB_EMBED_PROVIDER=fake for CI-style runs
-uv run codeplumb init
-uv run codeplumb ingest samples/sample-building-code/model-building-code-2026.md --corpus sample-bc-2026 --layer base --title "Model Building Code" --version 2026 --corpus-title "Model Building Code 2026"
-uv run codeplumb ingest samples/sample-building-code/local-amendments-2026.md --corpus sample-bc-2026 --layer amendment --title "Local Amendments" --version 2026
-uv run codeplumb search "occupant load factor for business areas"
+uv sync --extra local                 # local nomic-embed-text-v1.5; or set CODECITE_EMBED_PROVIDER=fake for CI-style runs
+uv run codecite init
+uv run codecite ingest samples/sample-building-code/model-building-code-2026.md --corpus sample-bc-2026 --layer base --title "Model Building Code" --version 2026 --corpus-title "Model Building Code 2026"
+uv run codecite ingest samples/sample-building-code/local-amendments-2026.md --corpus sample-bc-2026 --layer amendment --title "Local Amendments" --version 2026
+uv run codecite search "occupant load factor for business areas"
 ```
 
 Then wire it into a client:
 
 ```bash
-claude mcp add codeplumb -- uv run --directory /path/to/codeplumb codeplumb serve
+claude mcp add codecite -- uv run --directory /path/to/codecite codecite serve
 ```
 
 ```toml
 # ~/.codex/config.toml
-[mcp_servers.codeplumb]
+[mcp_servers.codecite]
 command = "uv"
-args = ["run", "--directory", "/path/to/codeplumb", "codeplumb", "serve"]
-env = { CODEPLUMB_DATABASE_URL = "postgresql://codeplumb:codeplumb@127.0.0.1:5432/codeplumb" }
+args = ["run", "--directory", "/path/to/codecite", "codecite", "serve"]
+env = { CODECITE_DATABASE_URL = "postgresql://codecite:codecite@127.0.0.1:5432/codecite" }
 ```
 
 ## What the MCP server exposes
@@ -48,24 +48,24 @@ env = { CODEPLUMB_DATABASE_URL = "postgresql://codeplumb:codeplumb@127.0.0.1:543
 | `get_context` | parent chain, siblings, children, referenced-by |
 | `resolve_reference` | which section/table/chapter references in a piece of text actually exist |
 | `list_corpora`, `list_chapters` | what is indexed |
-| `ingest_document` | off unless `CODEPLUMB_ENABLE_INGEST_TOOL=1`; path-restricted |
+| `ingest_document` | off unless `CODECITE_ENABLE_INGEST_TOOL=1`; path-restricted |
 
-Resources: `codeplumb://{corpus}/toc`, `codeplumb://{corpus}/section/{number}`, `codeplumb://{corpus}/document/{id}`.
+Resources: `codecite://{corpus}/toc`, `codecite://{corpus}/section/{number}`, `codecite://{corpus}/document/{id}`.
 Prompts: `code_question`, `compare_to_standard` (cite-or-abstain rules baked in).
 
 Verified in both clients (2026-09-07):
 
 ```
-$ claude mcp get codeplumb
-codeplumb:
+$ claude mcp get codecite
+codecite:
   Scope: User config (available in all your projects)
   Status: ✔ Connected
   Type: stdio
   Command: uv
-  Args: run --directory C:/Users/Randall/Documents/codeplumb codeplumb serve
+  Args: run --directory <path-to-repo> codecite serve
 
 $ codex mcp list
-codeplumb  uv  run --directory C:/Users/Randall/Documents/codeplumb codeplumb serve  enabled
+codecite  uv  run --directory <path-to-repo> codecite serve  enabled
 ```
 
 ![demo](docs/demo.gif)
@@ -79,7 +79,7 @@ codeplumb  uv  run --directory C:/Users/Randall/Documents/codeplumb codeplumb se
 
 ## Eval
 
-`uv run codeplumb eval evals/sample-bc.yaml --modes naive,vector,lexical,hybrid --report docs/EVALS.md` runs 64 questions (lookup, paraphrase, exception, table, definition, cross-reference, not-in-corpus) against the synthetic corpus. Results with the default local model (`nomic-embed-text-v1.5`, CPU), 2026-09-07:
+`uv run codecite eval evals/sample-bc.yaml --modes naive,vector,lexical,hybrid --report docs/EVALS.md` runs 64 questions (lookup, paraphrase, exception, table, definition, cross-reference, not-in-corpus) against the synthetic corpus. Results with the default local model (`nomic-embed-text-v1.5`, CPU), 2026-09-07:
 
 | mode | hit@1 | hit@3 | hit@5 | MRR | kind@5 | abstain | false abstain |
 |---|---|---|---|---|---|---|---|
@@ -92,13 +92,13 @@ codeplumb  uv  run --directory C:/Users/Randall/Documents/codeplumb codeplumb se
 
 ## Ohio profile
 
-`codeplumb fetch-oac 4101:1` downloads the Ohio Administrative Code rule PDFs (state law, free) from `codes.ohio.gov`, politely (robots.txt, 1 req/s, identifies itself). Ingest them with `--profile oac --layer amendment` over your own licensed IBC 2021 PDF on the `base` layer. The tool never touches any ICC domain.
+`codecite fetch-oac 4101:1` downloads the Ohio Administrative Code rule PDFs (state law, free) from `codes.ohio.gov`, politely (robots.txt, 1 req/s, identifies itself). Ingest them with `--profile oac --layer amendment` over your own licensed IBC 2021 PDF on the `base` layer. The tool never touches any ICC domain.
 
 ```bash
-uv run codeplumb fetch-oac 4101:1 --out corpus/oac
-uv run codeplumb ingest corpus/oac --corpus ohio-bc --layer amendment --profile oac --corpus-title "Ohio Building Code (OAC 4101:1)"
-uv run codeplumb ingest /path/to/your/IBC-2021.pdf --corpus ohio-bc --layer base --profile ibc --title "IBC 2021" --version 2021
-uv run codeplumb eval evals/ohio-bc.yaml --modes hybrid
+uv run codecite fetch-oac 4101:1 --out corpus/oac
+uv run codecite ingest corpus/oac --corpus ohio-bc --layer amendment --profile oac --corpus-title "Ohio Building Code (OAC 4101:1)"
+uv run codecite ingest /path/to/your/IBC-2021.pdf --corpus ohio-bc --layer base --profile ibc --title "IBC 2021" --version 2021
+uv run codecite eval evals/ohio-bc.yaml --modes hybrid
 ```
 
 `evals/ohio-bc.yaml` ships questions and expected rule numbers only; it contains no code text.
@@ -118,8 +118,8 @@ The misses are mostly one-line "modify exception #1" instructions with almost no
 The IBC itself is sold by ICC, but New York City publishes its own IBC-derived Building Code as free chapter PDFs (2014 edition based on IBC 2009; 2022 edition based on IBC 2015), and city law is a government edict. That makes it the cleanest way to exercise the whole pipeline on genuine ICC-layout PDFs. The chapter files are linked from the [2022 Construction Codes page](https://www.nyc.gov/site/buildings/codes/2022-construction-codes.page) and served from `/assets/buildings/codes-pdf/cons_codes_2022/`.
 
 ```bash
-uv run codeplumb ingest corpus/nyc2022 --corpus nyc-bc-2022 --layer base --profile ibc --version 2022 --corpus-title "New York City Building Code 2022"
-uv run codeplumb eval evals/nyc-bc-2022.yaml --modes hybrid,vector,lexical
+uv run codecite ingest corpus/nyc2022 --corpus nyc-bc-2022 --layer base --profile ibc --version 2022 --corpus-title "New York City Building Code 2022"
+uv run codecite eval evals/nyc-bc-2022.yaml --modes hybrid,vector,lexical
 ```
 
 Indexed 2026-09-07: 33 chapters, about 5,700 sections and 6,600 chunks (400+ tables, 500+ exceptions). Egress golden set (24 questions), `nomic-embed-text-v1.5` on CPU:
@@ -139,7 +139,7 @@ Operators index documents they already have the right to use. Nothing indexed le
 ## Layout
 
 ```
-src/codeplumb/   config · db (migrations, queries) · parse · profiles · tree · chunk · extract · embed · retrieve · evaluate · mcp_server · cli · fetch
+src/codecite/   config · db (migrations, queries) · parse · profiles · tree · chunk · extract · embed · retrieve · evaluate · mcp_server · cli · fetch
 samples/         synthetic Model Building Code 2026 (+ local amendments) · Acme design standards (generic profile)
 evals/           golden question set
 tests/           grammar, tree, chunker, extractors, retrieval (real Postgres), MCP over stdio

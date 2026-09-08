@@ -1,4 +1,4 @@
-# codeplumb eval: nyc-bc-2022.yaml (local-st:nomic-ai/nomic-embed-text-v1.5)
+# codecite eval: nyc-bc-2022.yaml (local-st:nomic-ai/nomic-embed-text-v1.5)
 
 | mode | n | hit@1 | hit@3 | hit@5 | hit@10 | mrr | kind@5 | abstain | false_abstain |
 |---|---|---|---|---|---|---|---|---|---|

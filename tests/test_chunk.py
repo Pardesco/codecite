@@ -1,9 +1,9 @@
 from pathlib import Path
 
-from codeplumb.chunk import HARD_CAP, chunk_section, count_tokens, split_to_fit
-from codeplumb.ingest import parse_to_tree
-from codeplumb.profiles import get_profile
-from codeplumb.tree import Section
+from codecite.chunk import HARD_CAP, chunk_section, count_tokens, split_to_fit
+from codecite.ingest import parse_to_tree
+from codecite.profiles import get_profile
+from codecite.tree import Section
 
 SAMPLE = Path(__file__).resolve().parent.parent / "samples" / "sample-building-code" / "model-building-code-2026.md"
 ibc = get_profile("ibc")

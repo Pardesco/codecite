@@ -1,10 +1,10 @@
 # Architecture
 
-codeplumb is a retrieval system, not an answer engine. The server never calls an LLM; the MCP client (Claude Code, Codex) reasons over quoted, cited section text. That one decision shapes everything below: the pipeline optimises for returning the *governing section* with enough surrounding structure that a model can cite it correctly, and it refuses to guess.
+codecite is a retrieval system, not an answer engine. The server never calls an LLM; the MCP client (Claude Code, Codex) reasons over quoted, cited section text. That one decision shapes everything below: the pipeline optimises for returning the *governing section* with enough surrounding structure that a model can cite it correctly, and it refuses to guess.
 
 ```mermaid
 flowchart TB
-  subgraph ingest["codeplumb ingest"]
+  subgraph ingest["codecite ingest"]
     A[file] --> B[parse/*<br/>Block stream: heading · paragraph · table · list-item]
     B --> C[profiles/*<br/>ibc · oac · generic<br/>match(block) -> Heading]
     C --> D[tree.build_tree<br/>stack-based; monotonic-number guard;<br/>captions attach tables to their section]
@@ -43,7 +43,7 @@ flowchart TB
 ## Why these choices
 
 - **Section chunking beats fixed windows.** The eval ships a `naive` mode that indexes the same documents as 512-token windows with no breadcrumb. On the synthetic corpus it loses to section chunking on every metric; see `docs/EVALS.md`. The windows straddle section boundaries and lose the chapter/section vocabulary that questions actually use.
-- **Two lexical passes.** `websearch_to_tsquery` ANDs every term, which is right for "Section 1004.5" and wrong for "how long can a dead-end corridor be". The OR pass (a tiny SQL function, `_codeplumb_or_query`) gives ranked partial matches; RRF sorts out the rest.
+- **Two lexical passes.** `websearch_to_tsquery` ANDs every term, which is right for "Section 1004.5" and wrong for "how long can a dead-end corridor be". The OR pass (a tiny SQL function, `_codecite_or_query`) gives ranked partial matches; RRF sorts out the rest.
 - **Abstain is a heuristic, not a promise.** `abstain` is true when no strict full-text match exists and the nearest vector is below a per-embedder cosine floor. The eval reports both abstain accuracy and the false-abstain rate so the floor can be tuned per model.
 - **Amendments overlay, not merge.** v1 pairs a base section with a same-numbered amendment and puts the amendment first with a note. Reconciling "amended to read as follows" edits into one text is v2.
 - **No ORM, no framework.** Every SQL statement is visible and parameterised. The schema fits on one screen.

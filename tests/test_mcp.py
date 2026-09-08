@@ -10,8 +10,8 @@ from tests.conftest import TEST_URL
 
 
 def _params():
-    env = {**os.environ, "CODEPLUMB_DATABASE_URL": TEST_URL, "CODEPLUMB_EMBED_PROVIDER": "fake"}
-    return StdioServerParameters(command=sys.executable, args=["-m", "codeplumb.cli", "serve"], env=env)
+    env = {**os.environ, "CODECITE_DATABASE_URL": TEST_URL, "CODECITE_EMBED_PROVIDER": "fake"}
+    return StdioServerParameters(command=sys.executable, args=["-m", "codecite.cli", "serve"], env=env)
 
 
 def _text(result):
@@ -48,8 +48,8 @@ async def test_mcp_tools_resources_prompts(db):
             assert any(c["number"] == "10" for c in (json.loads(x.text) for x in ch.content))
 
             templates = {t.uri_template for t in (await s.list_resource_templates()).resource_templates}
-            assert "codeplumb://{corpus}/section/{number}" in templates
-            page = await s.read_resource("codeplumb://sample-bc-2026/section/1004.5")
+            assert "codecite://{corpus}/section/{number}" in templates
+            page = await s.read_resource("codecite://sample-bc-2026/section/1004.5")
             assert "§1004.5" in page.contents[0].text
 
             prompts = {p.name for p in (await s.list_prompts()).prompts}

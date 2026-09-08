@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from codeplumb.evaluate import load_golden, render_report, run_eval
+from codecite.evaluate import load_golden, render_report, run_eval
 
 GOLDEN = Path(__file__).resolve().parent.parent / "evals" / "sample-bc.yaml"
 
